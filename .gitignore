@@ -1,0 +1,8 @@
+/.idea
+/artifacts
+/cache
+/node_modules
+/test-results
+/typechain-types
+
+.env

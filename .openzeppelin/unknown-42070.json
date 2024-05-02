@@ -1,0 +1,2447 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0x1c4B9Ed0dbe344981b4c0FAd9B0B0b8fA84eB3e8",
+    "txHash": "0xb61145c2873542576bfb6b407720f2a5281cd0b750c56f0aa4c5eb6f4fc887e4"
+  },
+  "proxies": [
+    {
+      "address": "0xe3532860076651fDB12Ca7E587D6A6f1a6e9Ef2d",
+      "txHash": "0xc6b8d20cfc3051edc19ac433eb3195f119b9460e0d47357188b0f81fa9bf2ec4",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x52E46847359365bd2B46027cfc28076F9B0CDFb4",
+      "txHash": "0x6b5f2dcdc52cc33b386f5fd6668b51a517ed72207ea71597a064bc1a366aee25",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x0a5813bd5E94FE0Ea3CF81838548772CC28b0f1E",
+      "txHash": "0x1efe5d892f54a38bf6c661e10dbbc3d047beb3d165d9094183605cbacf41fcb1",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x139c3A555ED502C89C04C213Ad4CB0fcfBF039d1",
+      "txHash": "0xfd50f5e4c8898286530e8177d15a4917bb89fcce2b2bd4bd4eb506e0ba835d0a",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "84f1216403ba6768e59fcef01fa4d753d3a115b6cc2175b0528ad2434021a22d": {
+      "address": "0xa298291462a45AE37166e25c97092B5FD1056779",
+      "txHash": "0x91f5082779d79e2fc716fb299274a11ff90f28aeea01e2a060b992212c219223",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "matches",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint64,t_struct(RspMatchData)2097_storage)",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:14"
+          },
+          {
+            "label": "duelGameHub",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:16"
+          },
+          {
+            "label": "actionTimeLimit",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:17"
+          },
+          {
+            "label": "revelationTimeLimit",
+            "offset": 25,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:18"
+          },
+          {
+            "label": "tieBreakScore",
+            "offset": 30,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:19"
+          },
+          {
+            "label": "_initialized",
+            "offset": 31,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "54",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_enum(RspAction)2156)dyn_storage": {
+            "label": "enum RockScissorsPaperLogic.RspAction[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_enum(RspAction)2156": {
+            "label": "enum RockScissorsPaperLogic.RspAction",
+            "members": [
+              "Rock",
+              "Scissor",
+              "Paper"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_enum(RspMatchState)2057": {
+            "label": "enum IRockScissorsPaperDuel.RspMatchState",
+            "members": [
+              "Nil",
+              "WaitingForActionHash",
+              "WaitingForAction",
+              "Player_1_Won",
+              "Player_2_Won",
+              "Drawn",
+              "Aborted"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint64,t_struct(RspMatchData)2097_storage)": {
+            "label": "mapping(uint64 => struct IRockScissorsPaperDuel.RspMatchData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(RspMatchData)2097_storage": {
+            "label": "struct IRockScissorsPaperDuel.RspMatchData",
+            "members": [
+              {
+                "label": "lastPlayer1ActionHashes",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lastPlayer2ActionHashes",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "player1Actions",
+                "type": "t_array(t_enum(RspAction)2156)dyn_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "player2Actions",
+                "type": "t_array(t_enum(RspAction)2156)dyn_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "round",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "actionTimeLimit",
+                "type": "t_uint40",
+                "offset": 2,
+                "slot": "4"
+              },
+              {
+                "label": "revelationTimeLimit",
+                "type": "t_uint40",
+                "offset": 7,
+                "slot": "4"
+              },
+              {
+                "label": "player1",
+                "type": "t_address",
+                "offset": 12,
+                "slot": "4"
+              },
+              {
+                "label": "player2",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "player1Score",
+                "type": "t_uint16",
+                "offset": 20,
+                "slot": "5"
+              },
+              {
+                "label": "player2Score",
+                "type": "t_uint16",
+                "offset": 22,
+                "slot": "5"
+              },
+              {
+                "label": "checkpoint",
+                "type": "t_uint40",
+                "offset": 24,
+                "slot": "5"
+              },
+              {
+                "label": "player1Submitted",
+                "type": "t_bool",
+                "offset": 29,
+                "slot": "5"
+              },
+              {
+                "label": "player2Submitted",
+                "type": "t_bool",
+                "offset": 30,
+                "slot": "5"
+              },
+              {
+                "label": "state",
+                "type": "t_enum(RspMatchState)2057",
+                "offset": 31,
+                "slot": "5"
+              },
+              {
+                "label": "logicVersion",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "tieBreakScore",
+                "type": "t_uint8",
+                "offset": 1,
+                "slot": "6"
+              }
+            ],
+            "numberOfBytes": "224"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint40": {
+            "label": "uint40",
+            "numberOfBytes": "5"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "9613eac90bb6f33a15bb0da04a3b5c77647e288d62d4a7c9c42d71d38a6aabfc": {
+      "address": "0x4dfEd27bda71d15ca5069DD5C22d7B18Ba49f632",
+      "txHash": "0xabbae230544680feb05d8a39babfa2ec0d3ea28676459f684434edfb7e1d13da",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "matches",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint64,t_struct(RspMatchData)2110_storage)",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:14"
+          },
+          {
+            "label": "duelGameHub",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:16"
+          },
+          {
+            "label": "actionTimeLimit",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:17"
+          },
+          {
+            "label": "revelationTimeLimit",
+            "offset": 25,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:18"
+          },
+          {
+            "label": "tieBreakScore",
+            "offset": 30,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:19"
+          },
+          {
+            "label": "_initialized",
+            "offset": 31,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "54",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_enum(RspAction)2231)dyn_storage": {
+            "label": "enum RockScissorsPaperLogic.RspAction[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_enum(RspAction)2231": {
+            "label": "enum RockScissorsPaperLogic.RspAction",
+            "members": [
+              "Rock",
+              "Scissor",
+              "Paper"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_enum(RspMatchState)2070": {
+            "label": "enum IRockScissorsPaperDuel.RspMatchState",
+            "members": [
+              "Nil",
+              "WaitingForActionHash",
+              "WaitingForAction",
+              "Player_1_Won",
+              "Player_2_Won",
+              "Drawn",
+              "Aborted"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint64,t_struct(RspMatchData)2110_storage)": {
+            "label": "mapping(uint64 => struct IRockScissorsPaperDuel.RspMatchData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(RspMatchData)2110_storage": {
+            "label": "struct IRockScissorsPaperDuel.RspMatchData",
+            "members": [
+              {
+                "label": "lastPlayer1ActionHashes",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lastPlayer2ActionHashes",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "player1Actions",
+                "type": "t_array(t_enum(RspAction)2231)dyn_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "player2Actions",
+                "type": "t_array(t_enum(RspAction)2231)dyn_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "round",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "actionTimeLimit",
+                "type": "t_uint40",
+                "offset": 2,
+                "slot": "4"
+              },
+              {
+                "label": "revelationTimeLimit",
+                "type": "t_uint40",
+                "offset": 7,
+                "slot": "4"
+              },
+              {
+                "label": "player1",
+                "type": "t_address",
+                "offset": 12,
+                "slot": "4"
+              },
+              {
+                "label": "player2",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "player1Score",
+                "type": "t_uint16",
+                "offset": 20,
+                "slot": "5"
+              },
+              {
+                "label": "player2Score",
+                "type": "t_uint16",
+                "offset": 22,
+                "slot": "5"
+              },
+              {
+                "label": "checkpoint",
+                "type": "t_uint40",
+                "offset": 24,
+                "slot": "5"
+              },
+              {
+                "label": "player1Submitted",
+                "type": "t_bool",
+                "offset": 29,
+                "slot": "5"
+              },
+              {
+                "label": "player2Submitted",
+                "type": "t_bool",
+                "offset": 30,
+                "slot": "5"
+              },
+              {
+                "label": "state",
+                "type": "t_enum(RspMatchState)2070",
+                "offset": 31,
+                "slot": "5"
+              },
+              {
+                "label": "logicVersion",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "tieBreakScore",
+                "type": "t_uint8",
+                "offset": 1,
+                "slot": "6"
+              }
+            ],
+            "numberOfBytes": "224"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint40": {
+            "label": "uint40",
+            "numberOfBytes": "5"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "2d0994d7a06805ad127a039996a8d15dcd95e6ddde6c9b771bd8975691808366": {
+      "address": "0xC1774C5B6dE629C203BeA35eA6DAe5d712363Ab2",
+      "txHash": "0x45d8ae8444b496d8c9c951fb0f9ac4cd02a3dfe4e7f194da9677e02db24507de",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "matches",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint64,t_struct(RspMatchData)2138_storage)",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:14"
+          },
+          {
+            "label": "duelGameHub",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:16"
+          },
+          {
+            "label": "actionTimeLimit",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:17"
+          },
+          {
+            "label": "revelationTimeLimit",
+            "offset": 25,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:18"
+          },
+          {
+            "label": "tieBreakScore",
+            "offset": 30,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:19"
+          },
+          {
+            "label": "_initialized",
+            "offset": 31,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "54",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_enum(RspAction)2276)dyn_storage": {
+            "label": "enum RockScissorsPaperLogic.RspAction[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_enum(RspAction)2276": {
+            "label": "enum RockScissorsPaperLogic.RspAction",
+            "members": [
+              "Rock",
+              "Scissor",
+              "Paper"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_enum(RspMatchState)2098": {
+            "label": "enum IRockScissorsPaperDuel.RspMatchState",
+            "members": [
+              "Nil",
+              "WaitingForActionHash",
+              "WaitingForAction",
+              "Player_1_Won",
+              "Player_2_Won",
+              "Drawn",
+              "Aborted"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint64,t_struct(RspMatchData)2138_storage)": {
+            "label": "mapping(uint64 => struct IRockScissorsPaperDuel.RspMatchData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(RspMatchData)2138_storage": {
+            "label": "struct IRockScissorsPaperDuel.RspMatchData",
+            "members": [
+              {
+                "label": "lastPlayer1ActionHashes",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lastPlayer2ActionHashes",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "player1Actions",
+                "type": "t_array(t_enum(RspAction)2276)dyn_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "player2Actions",
+                "type": "t_array(t_enum(RspAction)2276)dyn_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "round",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "actionTimeLimit",
+                "type": "t_uint40",
+                "offset": 2,
+                "slot": "4"
+              },
+              {
+                "label": "revelationTimeLimit",
+                "type": "t_uint40",
+                "offset": 7,
+                "slot": "4"
+              },
+              {
+                "label": "player1",
+                "type": "t_address",
+                "offset": 12,
+                "slot": "4"
+              },
+              {
+                "label": "player2",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "player1Score",
+                "type": "t_uint16",
+                "offset": 20,
+                "slot": "5"
+              },
+              {
+                "label": "player2Score",
+                "type": "t_uint16",
+                "offset": 22,
+                "slot": "5"
+              },
+              {
+                "label": "checkpoint",
+                "type": "t_uint40",
+                "offset": 24,
+                "slot": "5"
+              },
+              {
+                "label": "player1Submitted",
+                "type": "t_bool",
+                "offset": 29,
+                "slot": "5"
+              },
+              {
+                "label": "player2Submitted",
+                "type": "t_bool",
+                "offset": 30,
+                "slot": "5"
+              },
+              {
+                "label": "state",
+                "type": "t_enum(RspMatchState)2098",
+                "offset": 31,
+                "slot": "5"
+              },
+              {
+                "label": "logicVersion",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "tieBreakScore",
+                "type": "t_uint8",
+                "offset": 1,
+                "slot": "6"
+              }
+            ],
+            "numberOfBytes": "224"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint40": {
+            "label": "uint40",
+            "numberOfBytes": "5"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "93e7717625de4da2db4a466b3ded8b7fc37b3e5b7b3ea6d0c5c363245a08102f": {
+      "address": "0x48E38593bf4824523D074dd2EE849B2a50c02BaD",
+      "txHash": "0x4fbb5593fae670a6c715181617fb272d4ca8deb7d382264835faa3c733825bfb",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "matches",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint64,t_struct(RspMatchData)2206_storage)",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:14"
+          },
+          {
+            "label": "duelGameHub",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:16"
+          },
+          {
+            "label": "actionTimeLimit",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:17"
+          },
+          {
+            "label": "revelationTimeLimit",
+            "offset": 25,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:18"
+          },
+          {
+            "label": "tieBreakScore",
+            "offset": 30,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:19"
+          },
+          {
+            "label": "_initialized",
+            "offset": 31,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "54",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_enum(RspAction)2351)dyn_storage": {
+            "label": "enum RockScissorsPaperLogic.RspAction[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_enum(RspAction)2351": {
+            "label": "enum RockScissorsPaperLogic.RspAction",
+            "members": [
+              "Rock",
+              "Scissor",
+              "Paper"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_enum(RspMatchState)2166": {
+            "label": "enum IRockScissorsPaperDuel.RspMatchState",
+            "members": [
+              "Nil",
+              "WaitingForActionHash",
+              "WaitingForAction",
+              "Player_1_Won",
+              "Player_2_Won",
+              "Drawn",
+              "Aborted"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint64,t_struct(RspMatchData)2206_storage)": {
+            "label": "mapping(uint64 => struct IRockScissorsPaperDuel.RspMatchData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(RspMatchData)2206_storage": {
+            "label": "struct IRockScissorsPaperDuel.RspMatchData",
+            "members": [
+              {
+                "label": "lastPlayer1ActionHashes",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lastPlayer2ActionHashes",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "player1Actions",
+                "type": "t_array(t_enum(RspAction)2351)dyn_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "player2Actions",
+                "type": "t_array(t_enum(RspAction)2351)dyn_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "round",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "actionTimeLimit",
+                "type": "t_uint40",
+                "offset": 2,
+                "slot": "4"
+              },
+              {
+                "label": "revelationTimeLimit",
+                "type": "t_uint40",
+                "offset": 7,
+                "slot": "4"
+              },
+              {
+                "label": "player1",
+                "type": "t_address",
+                "offset": 12,
+                "slot": "4"
+              },
+              {
+                "label": "player2",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "player1Score",
+                "type": "t_uint16",
+                "offset": 20,
+                "slot": "5"
+              },
+              {
+                "label": "player2Score",
+                "type": "t_uint16",
+                "offset": 22,
+                "slot": "5"
+              },
+              {
+                "label": "checkpoint",
+                "type": "t_uint40",
+                "offset": 24,
+                "slot": "5"
+              },
+              {
+                "label": "player1Submitted",
+                "type": "t_bool",
+                "offset": 29,
+                "slot": "5"
+              },
+              {
+                "label": "player2Submitted",
+                "type": "t_bool",
+                "offset": 30,
+                "slot": "5"
+              },
+              {
+                "label": "state",
+                "type": "t_enum(RspMatchState)2166",
+                "offset": 31,
+                "slot": "5"
+              },
+              {
+                "label": "logicVersion",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "tieBreakScore",
+                "type": "t_uint8",
+                "offset": 1,
+                "slot": "6"
+              }
+            ],
+            "numberOfBytes": "224"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint40": {
+            "label": "uint40",
+            "numberOfBytes": "5"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "d00347499dda2dbb539a3c9f7855a5bb182c583fd1ff25e18fd8a2684db7ee7a": {
+      "address": "0x646162A5095e309f26eE09Fce243ADbdca17434E",
+      "txHash": "0xad1514624774c2050dcbf10888959596330743be76fa5d68d66bb12e69e10fe4",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "matches",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint64,t_struct(RspMatchData)2206_storage)",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:14"
+          },
+          {
+            "label": "duelGameHub",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:16"
+          },
+          {
+            "label": "actionTimeLimit",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:17"
+          },
+          {
+            "label": "revelationTimeLimit",
+            "offset": 25,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:18"
+          },
+          {
+            "label": "tieBreakScore",
+            "offset": 30,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:19"
+          },
+          {
+            "label": "_initialized",
+            "offset": 31,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "54",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_enum(RspAction)2351)dyn_storage": {
+            "label": "enum RockScissorsPaperLogic.RspAction[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_enum(RspAction)2351": {
+            "label": "enum RockScissorsPaperLogic.RspAction",
+            "members": [
+              "Rock",
+              "Scissor",
+              "Paper"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_enum(RspMatchState)2166": {
+            "label": "enum IRockScissorsPaperDuel.RspMatchState",
+            "members": [
+              "Nil",
+              "WaitingForActionHash",
+              "WaitingForAction",
+              "Player_1_Won",
+              "Player_2_Won",
+              "Drawn",
+              "Aborted"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint64,t_struct(RspMatchData)2206_storage)": {
+            "label": "mapping(uint64 => struct IRockScissorsPaperDuel.RspMatchData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(RspMatchData)2206_storage": {
+            "label": "struct IRockScissorsPaperDuel.RspMatchData",
+            "members": [
+              {
+                "label": "lastPlayer1ActionHash",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lastPlayer2ActionHash",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "player1Actions",
+                "type": "t_array(t_enum(RspAction)2351)dyn_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "player2Actions",
+                "type": "t_array(t_enum(RspAction)2351)dyn_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "round",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "actionTimeLimit",
+                "type": "t_uint40",
+                "offset": 2,
+                "slot": "4"
+              },
+              {
+                "label": "revelationTimeLimit",
+                "type": "t_uint40",
+                "offset": 7,
+                "slot": "4"
+              },
+              {
+                "label": "player1",
+                "type": "t_address",
+                "offset": 12,
+                "slot": "4"
+              },
+              {
+                "label": "player2",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "player1Score",
+                "type": "t_uint16",
+                "offset": 20,
+                "slot": "5"
+              },
+              {
+                "label": "player2Score",
+                "type": "t_uint16",
+                "offset": 22,
+                "slot": "5"
+              },
+              {
+                "label": "checkpoint",
+                "type": "t_uint40",
+                "offset": 24,
+                "slot": "5"
+              },
+              {
+                "label": "player1Submitted",
+                "type": "t_bool",
+                "offset": 29,
+                "slot": "5"
+              },
+              {
+                "label": "player2Submitted",
+                "type": "t_bool",
+                "offset": 30,
+                "slot": "5"
+              },
+              {
+                "label": "state",
+                "type": "t_enum(RspMatchState)2166",
+                "offset": 31,
+                "slot": "5"
+              },
+              {
+                "label": "logicVersion",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "tieBreakScore",
+                "type": "t_uint8",
+                "offset": 1,
+                "slot": "6"
+              }
+            ],
+            "numberOfBytes": "224"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint40": {
+            "label": "uint40",
+            "numberOfBytes": "5"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "68da8043102291e683b5bcca4d5318a7a9783a9f6efe7a28ca8bf42ddd0c9ad9": {
+      "address": "0xcDC99e9b1531922D01c50CB51bd4624B28D8f5Df",
+      "txHash": "0xabc660c955860322eeecd6f865c157bf9aec2263ad09397740bf73c99a142cdb",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "matches",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint64,t_struct(RspMatchData)2206_storage)",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:14"
+          },
+          {
+            "label": "duelGameHub",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:16"
+          },
+          {
+            "label": "actionTimeLimit",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:17"
+          },
+          {
+            "label": "revelationTimeLimit",
+            "offset": 25,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:18"
+          },
+          {
+            "label": "tieBreakScore",
+            "offset": 30,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:19"
+          },
+          {
+            "label": "_initialized",
+            "offset": 31,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "54",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_enum(RspAction)2351)dyn_storage": {
+            "label": "enum RockScissorsPaperLogic.RspAction[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_enum(RspAction)2351": {
+            "label": "enum RockScissorsPaperLogic.RspAction",
+            "members": [
+              "Rock",
+              "Scissor",
+              "Paper"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_enum(RspMatchState)2166": {
+            "label": "enum IRockScissorsPaperDuel.RspMatchState",
+            "members": [
+              "Nil",
+              "WaitingForActionHash",
+              "WaitingForAction",
+              "Player_1_Won",
+              "Player_2_Won",
+              "Drawn",
+              "Aborted"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint64,t_struct(RspMatchData)2206_storage)": {
+            "label": "mapping(uint64 => struct IRockScissorsPaperDuel.RspMatchData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(RspMatchData)2206_storage": {
+            "label": "struct IRockScissorsPaperDuel.RspMatchData",
+            "members": [
+              {
+                "label": "lastPlayer1ActionHash",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lastPlayer2ActionHash",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "player1Actions",
+                "type": "t_array(t_enum(RspAction)2351)dyn_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "player2Actions",
+                "type": "t_array(t_enum(RspAction)2351)dyn_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "round",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "actionTimeLimit",
+                "type": "t_uint40",
+                "offset": 2,
+                "slot": "4"
+              },
+              {
+                "label": "revelationTimeLimit",
+                "type": "t_uint40",
+                "offset": 7,
+                "slot": "4"
+              },
+              {
+                "label": "player1",
+                "type": "t_address",
+                "offset": 12,
+                "slot": "4"
+              },
+              {
+                "label": "player2",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "player1Score",
+                "type": "t_uint16",
+                "offset": 20,
+                "slot": "5"
+              },
+              {
+                "label": "player2Score",
+                "type": "t_uint16",
+                "offset": 22,
+                "slot": "5"
+              },
+              {
+                "label": "checkpoint",
+                "type": "t_uint40",
+                "offset": 24,
+                "slot": "5"
+              },
+              {
+                "label": "player1Submitted",
+                "type": "t_bool",
+                "offset": 29,
+                "slot": "5"
+              },
+              {
+                "label": "player2Submitted",
+                "type": "t_bool",
+                "offset": 30,
+                "slot": "5"
+              },
+              {
+                "label": "state",
+                "type": "t_enum(RspMatchState)2166",
+                "offset": 31,
+                "slot": "5"
+              },
+              {
+                "label": "logicVersion",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "tieBreakScore",
+                "type": "t_uint8",
+                "offset": 1,
+                "slot": "6"
+              }
+            ],
+            "numberOfBytes": "224"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint40": {
+            "label": "uint40",
+            "numberOfBytes": "5"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "91b0b89aa0bab812c163b42408d2242201d4321828f9cbe3283cd685875d6ce8": {
+      "address": "0xa9C1d69381d5644070aB642cdf6ae5cC135836A7",
+      "txHash": "0x6ebf4b7f842399ad9428bbb20190991a0237127a32a7dd3a9da08b78fd80855e",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "matches",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint64,t_struct(RspMatchData)2231_storage)",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:14"
+          },
+          {
+            "label": "duelGameHub",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:16"
+          },
+          {
+            "label": "actionTimeLimit",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:17"
+          },
+          {
+            "label": "revelationTimeLimit",
+            "offset": 25,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:18"
+          },
+          {
+            "label": "tieBreakScore",
+            "offset": 30,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:19"
+          },
+          {
+            "label": "_initialized",
+            "offset": 31,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "54",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_enum(RspAction)2376)dyn_storage": {
+            "label": "enum RockScissorsPaperLogic.RspAction[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_enum(RspAction)2376": {
+            "label": "enum RockScissorsPaperLogic.RspAction",
+            "members": [
+              "Rock",
+              "Scissor",
+              "Paper"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_enum(RspMatchState)2191": {
+            "label": "enum IRockScissorsPaperDuel.RspMatchState",
+            "members": [
+              "Nil",
+              "WaitingForActionHash",
+              "WaitingForAction",
+              "Player_1_Won",
+              "Player_2_Won",
+              "Drawn",
+              "Aborted"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint64,t_struct(RspMatchData)2231_storage)": {
+            "label": "mapping(uint64 => struct IRockScissorsPaperDuel.RspMatchData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(RspMatchData)2231_storage": {
+            "label": "struct IRockScissorsPaperDuel.RspMatchData",
+            "members": [
+              {
+                "label": "lastPlayer1ActionHash",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lastPlayer2ActionHash",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "player1Actions",
+                "type": "t_array(t_enum(RspAction)2376)dyn_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "player2Actions",
+                "type": "t_array(t_enum(RspAction)2376)dyn_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "round",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "actionTimeLimit",
+                "type": "t_uint40",
+                "offset": 2,
+                "slot": "4"
+              },
+              {
+                "label": "revelationTimeLimit",
+                "type": "t_uint40",
+                "offset": 7,
+                "slot": "4"
+              },
+              {
+                "label": "player1",
+                "type": "t_address",
+                "offset": 12,
+                "slot": "4"
+              },
+              {
+                "label": "player2",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "player1Score",
+                "type": "t_uint16",
+                "offset": 20,
+                "slot": "5"
+              },
+              {
+                "label": "player2Score",
+                "type": "t_uint16",
+                "offset": 22,
+                "slot": "5"
+              },
+              {
+                "label": "checkpoint",
+                "type": "t_uint40",
+                "offset": 24,
+                "slot": "5"
+              },
+              {
+                "label": "player1Submitted",
+                "type": "t_bool",
+                "offset": 29,
+                "slot": "5"
+              },
+              {
+                "label": "player2Submitted",
+                "type": "t_bool",
+                "offset": 30,
+                "slot": "5"
+              },
+              {
+                "label": "state",
+                "type": "t_enum(RspMatchState)2191",
+                "offset": 31,
+                "slot": "5"
+              },
+              {
+                "label": "logicVersion",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "tieBreakScore",
+                "type": "t_uint8",
+                "offset": 1,
+                "slot": "6"
+              }
+            ],
+            "numberOfBytes": "224"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint40": {
+            "label": "uint40",
+            "numberOfBytes": "5"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "e1d32bb8e8ae5ef295bc4c615bbcbafc7a69957221056b664a936bba69b20d8c": {
+      "address": "0x6369020c3217AFbf0a857Fe6E3f7deaD021c7A7a",
+      "txHash": "0xcafd36f15f1f99959ebc78e94e9b24089d1596541bbf2bcb794ee45e657636ad",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "matches",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint64,t_struct(RspMatchData)2234_storage)",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:14"
+          },
+          {
+            "label": "duelGameHub",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:16"
+          },
+          {
+            "label": "actionTimeLimit",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:17"
+          },
+          {
+            "label": "revelationTimeLimit",
+            "offset": 25,
+            "slot": "1",
+            "type": "t_uint40",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:18"
+          },
+          {
+            "label": "tieBreakScore",
+            "offset": 30,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "RockScissorsPaperDuelStorage",
+            "src": "contracts/RockScissorsPaperDuel.sol:19"
+          },
+          {
+            "label": "_initialized",
+            "offset": 31,
+            "slot": "1",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "54",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_enum(RspAction)2381)dyn_storage": {
+            "label": "enum RockScissorsPaperLogic.RspAction[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_enum(RspAction)2381": {
+            "label": "enum RockScissorsPaperLogic.RspAction",
+            "members": [
+              "Rock",
+              "Scissor",
+              "Paper"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_enum(RspMatchState)2194": {
+            "label": "enum IRockScissorsPaperDuel.RspMatchState",
+            "members": [
+              "Nil",
+              "WaitingForActionHash",
+              "WaitingForAction",
+              "Player_1_Won",
+              "Player_2_Won",
+              "Drawn",
+              "Aborted"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint64,t_struct(RspMatchData)2234_storage)": {
+            "label": "mapping(uint64 => struct IRockScissorsPaperDuel.RspMatchData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(RspMatchData)2234_storage": {
+            "label": "struct IRockScissorsPaperDuel.RspMatchData",
+            "members": [
+              {
+                "label": "lastPlayer1ActionHash",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lastPlayer2ActionHash",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "player1Actions",
+                "type": "t_array(t_enum(RspAction)2381)dyn_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "player2Actions",
+                "type": "t_array(t_enum(RspAction)2381)dyn_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "round",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "actionTimeLimit",
+                "type": "t_uint40",
+                "offset": 2,
+                "slot": "4"
+              },
+              {
+                "label": "revelationTimeLimit",
+                "type": "t_uint40",
+                "offset": 7,
+                "slot": "4"
+              },
+              {
+                "label": "player1",
+                "type": "t_address",
+                "offset": 12,
+                "slot": "4"
+              },
+              {
+                "label": "player2",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "player1Score",
+                "type": "t_uint16",
+                "offset": 20,
+                "slot": "5"
+              },
+              {
+                "label": "player2Score",
+                "type": "t_uint16",
+                "offset": 22,
+                "slot": "5"
+              },
+              {
+                "label": "checkpoint",
+                "type": "t_uint40",
+                "offset": 24,
+                "slot": "5"
+              },
+              {
+                "label": "player1Submitted",
+                "type": "t_bool",
+                "offset": 29,
+                "slot": "5"
+              },
+              {
+                "label": "player2Submitted",
+                "type": "t_bool",
+                "offset": 30,
+                "slot": "5"
+              },
+              {
+                "label": "state",
+                "type": "t_enum(RspMatchState)2194",
+                "offset": 31,
+                "slot": "5"
+              },
+              {
+                "label": "logicVersion",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "tieBreakScore",
+                "type": "t_uint8",
+                "offset": 1,
+                "slot": "6"
+              }
+            ],
+            "numberOfBytes": "224"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint40": {
+            "label": "uint40",
+            "numberOfBytes": "5"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  }
+}

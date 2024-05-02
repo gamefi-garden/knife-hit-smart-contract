@@ -1,0 +1,25 @@
+{
+    "name": "knife-hit-smart-contract",
+    "scripts": {
+        "console:local": "npx hardhat --network localhost console",
+        "console:testnet": "npx hardhat --network testnet console",
+        "deployAsync:testnet": "npx hardhat --network testnet run scripts/deployAsyncKnifeHit.ts",
+        "console:mainnet": "npx hardhat --network mainnet console",
+        "deployAsync:mainnet": "npx hardhat --network mainnet run scripts/deployAsyncKnifeHit.ts"
+    },
+    "devDependencies": {
+        "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
+        "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+        "@nomiclabs/hardhat-solhint": "^3.0.1",
+        "@openzeppelin/contracts-upgradeable": "4.9.3",
+        "@openzeppelin/hardhat-upgrades": "^1.28.0",
+        "@types/random-seed": "^0.3.3",
+        "dotenv": "^16.1.4",
+        "hardhat": "^2.22.3",
+        "hardhat-contract-sizer": "^2.10.0",
+        "mocha-junit-reporter": "^2.2.0",
+        "mocha-multi-reporters": "^1.5.1",
+        "random-seed": "^0.3.0",
+        "typescript": "^5.4.5"
+    }
+}
