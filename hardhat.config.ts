@@ -9,38 +9,47 @@ const config: HardhatUserConfig = {
     defaultNetwork: 'hardhat',
     networks: {
         hardhat: {
+            // forking: { url: "https://node.l2.trustless.computer/" },
             allowUnlimitedContractSize: true,
-            gas: 10000000,
+            gas: 100000000,
+            blockGasLimit: 1000000000,
             mining: {
               auto: true,
               interval: 5000,
             },
-          },
-        
-        localhost: {
+            treasuryAddress: process.env.TESTNET_TREASURY_ADDRESS,
+            mainAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
+            contractFactory: process.env.CONTRACT_FACTORY_NAME
+          } as any,
+          localhost: {
             allowUnlimitedContractSize: true,
-            gas: 10000000,
+            gas: 100000000,
             mining: {
               auto: true,
               interval: 5000,
             },
-            asyncKnifeHitAddress: process.env.TESTNET_ASYNC_KNIFE_HIT_ADDRESS
-        },
-
-        testnet: {
-            url: 'https://testnet.bitcoinarcade.xyz/knifehit',
+            treasuryAddress: process.env.TESTNET_TREASURY_ADDRESS,
+            mainAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
+            contractFactory: process.env.CONTRACT_FACTORY_NAME
+          } as any,
+          arcadeDev: {
+            url: 'https://testnet.bitcoinarcade.xyz/rpc',
             accounts: [process.env.TESTNET_DEPLOYER_PRIVATE_KEY],
             chainId: 23508,
             allowUnlimitedContractSize: true,
-            asyncKnifeHitAddress: process.env.TESTNET_ASYNC_KNIFE_HIT_ADDRESS,
-        } as any,
-        mainnet: {
-            url: "https://node.l2.trustless.computer/",
-            accounts: [process.env.MAINNET_DEPLOYER_PRIVATE_KEY],
-            chainId: 42213,
+            treasuryAddress: process.env.ARCADE_TREASURY_ADDRESS,
+            mainAddress: process.env.ARCADE_DEV_DUCK_RACE_ADDRESS,
+            contractFactory: process.env.CONTRACT_FACTORY_NAME
+          } as any,
+          testnet: {
+            url: 'https://l2-node.regtest.trustless.computer/',
+            accounts: [process.env.TESTNET_DEPLOYER_PRIVATE_KEY],
+            chainId: 42070,
             allowUnlimitedContractSize: true,
-            asyncKNIFE_HITAddress: process.env.MAINNET_ASYNC_KNIFE_HIT_ADDRESS,
-        } as any,
+            treasuryAddress: process.env.TESTNET_TREASURY_ADDRESS,
+            mainAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
+            contractFactory: process.env.CONTRACT_FACTORY_NAME
+          } as any,
     },
     etherscan: {
         apiKey: {

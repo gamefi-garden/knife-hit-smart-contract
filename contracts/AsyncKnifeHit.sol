@@ -21,7 +21,7 @@ abstract contract AsyncKnifeHitStorage is IAsyncKnifeHit {
     uint64 public matchNumber;
 
 }
-abstract contract AsyncKnifeHit is
+contract AsyncKnifeHit is
 AsyncKnifeHitStorage,
 OwnableUpgradeable,
 PausableUpgradeable,
@@ -29,7 +29,7 @@ ReentrancyGuardUpgradeable {
     address constant private ADDRESS_ZERO = address(0);
     uint8 constant private LOGIC_VERSION = 1;
 
-    function initialize() external initializer {
+    function initialize(address _treasury) external initializer {
         __Ownable_init_unchained();
         __Pausable_init_unchained();
         __ReentrancyGuard_init_unchained();

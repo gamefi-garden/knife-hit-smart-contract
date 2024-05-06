@@ -49,6 +49,6 @@ interface IAsyncKnifeHit {
     function findMatch(
         address _token,
         uint256 _entry,
-        uint32[][10] memory _actions
+        uint32[10][] memory _actions
     ) external payable ;
 }

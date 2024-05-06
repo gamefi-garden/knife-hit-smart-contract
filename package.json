@@ -4,13 +4,14 @@
         "node:local": "npx hardhat --config hardhat.local.config.ts node",
 
         "console:local": "npx hardhat --network localhost console",
-        "deployAsync:local": "npx hardhat --network localhost run scripts/deployAsyncKnifeHit.ts",
+        "deployAsync:local": "npx hardhat --network localhost run scripts/deploy.ts",
 
         "console:testnet": "npx hardhat --network testnet console",
-        "deployAsync:testnet": "npx hardhat --network testnet run scripts/deployAsyncKnifeHit.ts",
+        "deployAsync:testnet": "npx hardhat --network testnet run scripts/deploy.ts",
 
-        "console:mainnet": "npx hardhat --network mainnet console",
-        "deployAsync:mainnet": "npx hardhat --network mainnet run scripts/deployAsyncKnifeHit.ts"
+        "console:arcadeDev": "npx hardhat --network arcadeDev console",
+        "deploy:arcadeDev": "npx hardhat --network arcadeDev run scripts/deploy.ts"
+
     },
     "devDependencies": {
         "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
