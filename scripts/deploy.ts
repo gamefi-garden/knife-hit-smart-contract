@@ -11,9 +11,7 @@ async function deployAsyncKnifeHit() {
     const asyncKnifeHitAddress = config.mainAddress ?
         await (async () => {
             await upgrades.upgradeProxy(config.mainAddress, knifeHit);
-            console.log(
-                `Poker contract is upgraded to ${config.mainAddress}`
-            );
+      
             return config.mainAddress;
           })()
           : await (async () => {
@@ -32,7 +30,7 @@ async function deployAsyncKnifeHit() {
             const poker = await upgrades.deployProxy(knifeHit, [
                 treasuryAddress]);
             await poker.deployed();
-            console.log(`Poker contract is deployed to ${poker.address}`);
+            console.log(`Knife Hit contract is deployed to ${poker.address}`);
             return poker.address;
         })();
 

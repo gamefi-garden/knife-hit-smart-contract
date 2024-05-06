@@ -9,15 +9,13 @@ import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/se
 import {IAsyncKnifeHit} from "./interfaces/IAsyncKnifeHit.sol";
 import {KnifeHitLogic} from "./libraries/KnifeHitLogic.sol";
 import {Set} from "contracts/libraries/Set.sol";
+import "hardhat/console.sol";
 
 
 abstract contract AsyncKnifeHitStorage is IAsyncKnifeHit {
     mapping(uint64 => KnifeHitMatchData) internal matches;
 
     KnifeHitLogic.KnifeHitGameConfig public gameConfig;
-
-
-
     uint64 public matchNumber;
 
 }
@@ -33,6 +31,7 @@ ReentrancyGuardUpgradeable {
         __Ownable_init_unchained();
         __Pausable_init_unchained();
         __ReentrancyGuard_init_unchained();
+        
 
         gameConfig = KnifeHitLogic.KnifeHitGameConfig({
         knifeMoveTime: 300,
@@ -101,21 +100,8 @@ ReentrancyGuardUpgradeable {
         })]
         });
 
-        gameConfig.configs[0] = KnifeHitLogic.KnifeHitLevelConfig({
-            easeType: 0,
-            rotateSpeed: 5000,
-            knifeCount: 9,
-            obstacle: 1073743104
-        });
-
-        gameConfig.configs[1] = KnifeHitLogic.KnifeHitLevelConfig({
-            easeType: 0,
-            rotateSpeed: 5000,
-            knifeCount: 4,
-            obstacle: 1073782784
-        });
-
-
+        console.log("Init");
+        console.log(gameConfig.configs.length);
     }
 
     function version() external pure returns (string memory) {
@@ -145,6 +131,9 @@ ReentrancyGuardUpgradeable {
    function getGameConfig() external view returns (
         KnifeHitLogic.KnifeHitGameConfig memory
     ) {
+        console.log("getGameConfig");
+        console.log(gameConfig.configs.length);
+
         return gameConfig;
     }
 

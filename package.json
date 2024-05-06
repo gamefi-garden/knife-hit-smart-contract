@@ -4,7 +4,7 @@
         "node:local": "npx hardhat --config hardhat.local.config.ts node",
 
         "console:local": "npx hardhat --network localhost console",
-        "deployAsync:local": "npx hardhat --network localhost run scripts/deploy.ts",
+        "deploy:local": "npx hardhat --network localhost run scripts/deploy.ts",
 
         "console:testnet": "npx hardhat --network testnet console",
         "deployAsync:testnet": "npx hardhat --network testnet run scripts/deploy.ts",
