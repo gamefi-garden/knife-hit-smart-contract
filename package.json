@@ -1,9 +1,14 @@
 {
     "name": "knife-hit-smart-contract",
     "scripts": {
+        "node:local": "npx hardhat --config hardhat.local.config.ts node",
+
         "console:local": "npx hardhat --network localhost console",
+        "deployAsync:local": "npx hardhat --network localhost run scripts/deployAsyncKnifeHit.ts",
+
         "console:testnet": "npx hardhat --network testnet console",
         "deployAsync:testnet": "npx hardhat --network testnet run scripts/deployAsyncKnifeHit.ts",
+
         "console:mainnet": "npx hardhat --network mainnet console",
         "deployAsync:mainnet": "npx hardhat --network mainnet run scripts/deployAsyncKnifeHit.ts"
     },

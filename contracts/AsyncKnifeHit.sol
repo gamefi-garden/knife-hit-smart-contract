@@ -5,149 +5,199 @@ import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Own
 import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
 
-import {IAsyncGameHub} from "./interfaces/IAsyncGameHub.sol";
+// import {IAsyncGameHub} from "./interfaces/IAsyncGameHub.sol";
 import {IAsyncKnifeHit} from "./interfaces/IAsyncKnifeHit.sol";
-
 import {KnifeHitLogic} from "./libraries/KnifeHitLogic.sol";
+import {Set} from "contracts/libraries/Set.sol";
+
 
 abstract contract AsyncKnifeHitStorage is IAsyncKnifeHit {
     mapping(uint64 => KnifeHitMatchData) internal matches;
 
-    address public gameHub;
+    KnifeHitLogic.KnifeHitGameConfig public gameConfig;
 
-    uint256[50] private __gap;
+
+
+    uint64 public matchNumber;
+
 }
-
-contract AsyncKnifeHit is
+abstract contract AsyncKnifeHit is
 AsyncKnifeHitStorage,
 OwnableUpgradeable,
 PausableUpgradeable,
 ReentrancyGuardUpgradeable {
     address constant private ADDRESS_ZERO = address(0);
     uint8 constant private LOGIC_VERSION = 1;
-    KnifeHitLogic.KnifeHitGameConfig gameConfig;
 
-    function initialize(address _gameHub) external initializer {
+    function initialize() external initializer {
         __Ownable_init_unchained();
         __Pausable_init_unchained();
         __ReentrancyGuard_init_unchained();
 
-        gameHub = _gameHub;
+        gameConfig = KnifeHitLogic.KnifeHitGameConfig({
+        knifeMoveTime: 300,
+        gameDuration: 30000,
+        ratio: 50,
+        configs: [
+        KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 5000,
+            knifeCount: 9,
+            obstacle: 1073743104
+        }),
+        KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 5000,
+            knifeCount: 4,
+            obstacle: 1073782784
+        }),
+        KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 5000,
+            knifeCount: 4,
+            obstacle: 1073782784
+        }),
+        KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 5000,
+            knifeCount: 4,
+            obstacle: 1073782784
+        }),
+        KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 5000,
+            knifeCount: 4,
+            obstacle: 1073782784
+        }),
+        KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 5000,
+            knifeCount: 4,
+            obstacle: 1073782784
+        }),
+        KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 5000,
+            knifeCount: 4,
+            obstacle: 1073782784
+        }),   
+        KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 5000,
+            knifeCount: 4,
+            obstacle: 1073782784
+        }), 
+        KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 5000,
+            knifeCount: 4,
+            obstacle: 1073782784
+        }),  
+        KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 5000,
+            knifeCount: 4,
+            obstacle: 1073782784
+        })]
+        });
 
-        emit GameHubUpdate(_gameHub);
+        gameConfig.configs[0] = KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 5000,
+            knifeCount: 9,
+            obstacle: 1073743104
+        });
+
+        gameConfig.configs[1] = KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 5000,
+            knifeCount: 4,
+            obstacle: 1073782784
+        });
+
+
     }
 
     function version() external pure returns (string memory) {
         return "v0.0.1";
     }
 
-    function pause() external onlyOwner whenNotPaused {
-        _pause();
-    }
 
-    function unpause() external onlyOwner whenNotPaused {
-        _unpause();
-    }
-
-    function updateGameHub(address _gameHub) external onlyOwner {
-        gameHub = _gameHub;
-        emit GameHubUpdate(_gameHub);
-    }
 
     function getMatch(uint64 _matchId) external view returns (
-        KnifeHitMatchData memory,
-        IAsyncGameHub.BriefMatchData memory
+        KnifeHitMatchData memory
     ) {
         KnifeHitMatchData memory matchData = matches[_matchId];
-        IAsyncGameHub.BriefMatchData memory gameHubMatchData = IAsyncGameHub(gameHub).getMatch(_matchId);
-
-        // if (matchData.playerActions.length != 2 && msg.sender != gameHubMatchData.playerAddresses[0]) {
-        //     delete matchData.playerActions;
-        // }
-
-        return (matchData, gameHubMatchData);
+        return matchData;
     }
 
     function getMatches(uint64[] calldata matchIds) external view returns (
-        KnifeHitMatchData[] memory,
-        IAsyncGameHub.BriefMatchData[] memory
+        KnifeHitMatchData[] memory
     ) {
         uint256 matchNumber = matchIds.length;
         KnifeHitMatchData[] memory rspMatches = new KnifeHitMatchData[](matchNumber);
-        IAsyncGameHub.BriefMatchData[] memory gameHubMatches = new IAsyncGameHub.BriefMatchData[](matchNumber);
         for (uint256 i = 0; i < matchNumber; ++i) {
             rspMatches[i] = matches[matchIds[i]];
-            gameHubMatches[i] = IAsyncGameHub(gameHub).getMatch(matchIds[i]);
         }
-        return (rspMatches, gameHubMatches);
+        return rspMatches;
     }
+
+   function getGameConfig() external view returns (
+        KnifeHitLogic.KnifeHitGameConfig memory
+    ) {
+        return gameConfig;
+    }
+
+
+
     function findMatch(
         address _token,
         uint256 _entry,
-        uint32[][10] memory _actions
+        uint32[10][] memory _actions
     ) external payable nonReentrant whenNotPaused {
-        uint64 matchId = IAsyncGameHub(gameHub).findMatch{value: msg.value}(
-            msg.sender,
-            _token,
-            _entry,
-            2
-        );
 
-        KnifeHitMatchData storage matchData = matches[matchId];
-        address[] memory playerAddresses = IAsyncGameHub(gameHub).getMatchPlayerAddresses(matchId);
+       KnifeHitMatchData storage matchData = matches[matchNumber];
 
-         if (msg.sender == playerAddresses[0]) {
-            matchData.player1Actions = _actions;
+        if ( matchData.playerAddresses[0] == msg.sender
+            || matchData.gamePhase == GamePhase.End )
+        {
+            uint64 matchId = ++matchNumber;
+            matchData.matchId = matchId;
+            matchData.entry = _entry;
+            matchData.token = _token;
+            matchData.creator = msg.sender;
+            matchData.playerAddresses[0] = msg.sender;
             matchData.logicVersion = LOGIC_VERSION;
-            emit KnifeHitMatchCreation(matchId, msg.sender);
+            
+            matchData.gamePhase = GamePhase.Playing;
+            matchData.player1Actions = _actions;
+        }
+        else
+            if(matchData.gamePhase == GamePhase.Playing)
+            {
+                uint64 matchId = matchData.matchId;
 
-            IAsyncGameHub(gameHub).setScore(
-                matchId,
-                msg.sender,
-                KnifeHitLogic.CalculateScore(_actions,gameConfig),
-                ADDRESS_ZERO
-            );
-        }else {
-            matchData.player2Actions = _actions;
+                matchData.playerAddresses[1] = msg.sender;
 
-             uint32 result = KnifeHitLogic.compare(
+                matchData.player2Actions = _actions;
+
+                address winner;
+                uint32 result = KnifeHitLogic.compare(
                 matchData.player1Actions,
                 matchData.player2Actions,
                 gameConfig
-            );
+                );
 
-
-            address winner;
-            if (result > 0) {
-                winner = playerAddresses[0];
-            emit KnifeHitMatchFulfillment(matchId, msg.sender, winner);
-            } else if (result < 0) {
-                winner = playerAddresses[1];
+                if (result > 0) {
+                    winner = matchData.playerAddresses[0];
                 emit KnifeHitMatchFulfillment(matchId, msg.sender, winner);
-            } else {
-                winner = address(this);
-                emit KnifeHitMatchFulfillment(matchId, msg.sender, ADDRESS_ZERO);
+                } else if (result < 0) {
+                    winner = matchData.playerAddresses[1];
+                    emit KnifeHitMatchFulfillment(matchId, msg.sender, winner);
+                } else {
+                    winner = address(this);
+                    emit KnifeHitMatchFulfillment(matchId, msg.sender, ADDRESS_ZERO);
+                }
             }
-
-             IAsyncGameHub(gameHub).setScore(
-                matchId,
-                msg.sender,
-                0,
-                winner
-            );
-        }
-
-     
-    }
-
-    function abortMatch(uint64 _matchId) external nonReentrant {
-        if (IAsyncGameHub(gameHub).getMatchPlayer(_matchId, msg.sender).index == 1) {
-            revert InvalidMatchAborting();
-        }
-
-        IAsyncGameHub(gameHub).abortMatch(_matchId);
-
-        emit KnifeHitMatchAbortion(_matchId);
-
     }
 }

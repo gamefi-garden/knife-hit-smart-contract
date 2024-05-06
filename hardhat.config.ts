@@ -9,30 +9,37 @@ const config: HardhatUserConfig = {
     defaultNetwork: 'hardhat',
     networks: {
         hardhat: {
-            // forking: { url: "https://node.l2.trustless.computer/" },
             allowUnlimitedContractSize: true,
-            gas: 100000000,
-            blockGasLimit: 1000000000,
-        } as any,
+            gas: 10000000,
+            mining: {
+              auto: true,
+              interval: 5000,
+            },
+          },
+        
+        localhost: {
+            allowUnlimitedContractSize: true,
+            gas: 10000000,
+            mining: {
+              auto: true,
+              interval: 5000,
+            },
+            asyncKnifeHitAddress: process.env.TESTNET_ASYNC_KNIFE_HIT_ADDRESS
+        },
+
         testnet: {
             url: 'https://testnet.bitcoinarcade.xyz/knifehit',
             accounts: [process.env.TESTNET_DEPLOYER_PRIVATE_KEY],
             chainId: 23508,
             allowUnlimitedContractSize: true,
-            asyncGameHubAddress: process.env.TESTNET_ASYNC_GAME_HUB_ADDRESS,
-            asyncRspAddress: process.env.TESTNET_ASYNC_RSP_ADDRESS,
-            duelGameHubAddress: process.env.TESTNET_DUEL_GAME_HUB_ADDRESS,
-            duelRspAddress: process.env.TESTNET_DUEL_RSP_ADDRESS,
+            asyncKnifeHitAddress: process.env.TESTNET_ASYNC_KNIFE_HIT_ADDRESS,
         } as any,
         mainnet: {
             url: "https://node.l2.trustless.computer/",
             accounts: [process.env.MAINNET_DEPLOYER_PRIVATE_KEY],
             chainId: 42213,
             allowUnlimitedContractSize: true,
-            asyncGameHubAddress: process.env.MAINNET_ASYNC_GAME_HUB_ADDRESS,
-            asyncRspAddress: process.env.MAINNET_ASYNC_RSP_ADDRESS,
-            duelGameHubAddress: process.env.MAINNET_DUEL_GAME_HUB_ADDRESS,
-            duelRspAddress: process.env.MAINNET_DUEL_RSP_ADDRESS,
+            asyncKNIFE_HITAddress: process.env.MAINNET_ASYNC_KNIFE_HIT_ADDRESS,
         } as any,
     },
     etherscan: {

@@ -4,96 +4,58 @@ pragma solidity ^0.8.19;
 library KnifeHitLogic {
     //10 Level
     struct KnifeHitGameConfig {
-        uint16 knifeMoveTime;
-
-        uint16 colliderOffset;
-
+        uint32 knifeMoveTime;
+        uint32 gameDuration;
+        uint32 ratio;
         KnifeHitLevelConfig[10] configs;
     }
 
     struct KnifeHitLevelConfig {
-        uint16 oneRotationTime;
-        uint32[] obstacle;
+        uint easeType; 
+        uint32 rotateSpeed; // time 1 vong quay
+        uint32 knifeCount;
+        uint32 obstacle; // obstacle bit mask | 1: khong the cam dao vao 
     }
-    //configs 
-    // { knifeMoveTime = 300; colliderOffset = 100}
-    //configs 
-    // {oneRotationTime 5000, obstacle {0;1000;2000;4000} }
-    // {oneRotationTime 3000, obstacle {0;1000;2000} }
-    function CalculateScore(uint32[][10] memory action, KnifeHitGameConfig memory gameConfig) internal pure returns (uint32 s)
+ 
+    function CalculateScore(uint32[10][] memory action,KnifeHitGameConfig memory gameConfig) internal pure returns (uint32 s)
     {
-        uint32 score = 0;
-        uint32 obstacleIdx = 0;
-        int32 actionValidIdx = -1;
-        uint32 lastActionValidIdx = 0;
 
-        for (uint32 level = 0; level < action.length; level++) {
+        uint _score = 0;
 
-            KnifeHitLevelConfig memory levelconfig = gameConfig.configs[level];
-            uint32[] memory actionValid = new uint32[](action[level].length);
+        uint32 posOfKnife;
 
-            for(uint32 i = 0; i < action[level].length;i++ )
+        for (uint level = 0; level < action.length; level++) 
+        {
+
+            KnifeHitLevelConfig memory levelConfig = gameConfig.configs[level];
+            uint totalKnife = levelConfig.obstacle;
+            uint32 timePerSection = levelConfig.rotateSpeed / gameConfig.ratio;
+
+            for (uint i = 0; i < action[level].length; i++)
             {
-                uint32 triggerTime = (action[level][i] + gameConfig.knifeMoveTime) % levelconfig.oneRotationTime;
+                uint32 triggerTime = (action[level][i] + gameConfig.knifeMoveTime) % levelConfig.rotateSpeed;
 
-                if (action[level][i] >= levelconfig.oneRotationTime)
-                {
-                    obstacleIdx = 0;
-                    actionValidIdx = 0;
-                }
+                posOfKnife = triggerTime / timePerSection;
 
-                uint obstacleTime = levelconfig.obstacle[obstacleIdx] + gameConfig.colliderOffset;
-           
-                while (triggerTime > obstacleTime)
-                {
-                    obstacleIdx++;
-                    obstacleTime = levelconfig.obstacle[obstacleIdx] + gameConfig.colliderOffset;
-                        
-                }
-                if (triggerTime >= levelconfig.obstacle[obstacleIdx])
-                {
-                    // Debug.LogError("==================Collider Obstacle=============");
-                    continue;
-                }
-        
-                while (actionValidIdx != -1 
-                    && uint32(actionValidIdx) < actionValid.length -1
-                    && triggerTime > actionValid[uint32(actionValidIdx)] + gameConfig.colliderOffset)
-                {
-                    actionValidIdx++;
-                }
+                uint bitmask = 1 << posOfKnife;
+                bool hasValue = (totalKnife & bitmask) != 0;
 
-          
-            if (actionValidIdx != -1 &&
-             triggerTime <= actionValid[uint32(actionValidIdx)] + gameConfig.colliderOffset)
-            {
-                // Debug.LogError("==================Collider Action=============");
-                break;
+                if (hasValue) {
+
+                    // return _score;
+                    break;
+                }
+                _score++;
+                totalKnife |= bitmask;
             }
-
-            if (actionValidIdx == -1)
-            {
-                actionValidIdx = 0;
-            }
-            
-            score++;
-                
-            actionValid[lastActionValidIdx] = triggerTime;
-            lastActionValidIdx++;
-
-            }
-
-         
         }
-        return score;
+
+        return uint32(_score);
     }
-
-
-    // 0 1000-> 1trigfger     -> 5000
 
     function compare(
-        uint32[][10] memory _player1Actions,
-        uint32[][10] memory _player2Actions,
+        uint32[10][] memory _player1Actions,
+        uint32[10][] memory _player2Actions,
         KnifeHitGameConfig memory configs
     ) internal pure returns (uint32) {
         uint32 result = CalculateScore(_player1Actions,configs) - CalculateScore(_player2Actions,configs);

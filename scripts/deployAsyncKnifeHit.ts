@@ -1,41 +1,44 @@
 import assert from 'assert';
 import {ethers, network, upgrades} from 'hardhat';
 
-async function deployAsyncRsp() {
+async function deployAsyncKnifeHit() {
     const config = network.config as any;
     const networkName = network.name.toUpperCase();
 
-    const AsyncRsp = await ethers.getContractFactory('AsyncRockScissorsPaper');
-    const asyncRspAddress = config.asyncRspAddress ?
+    const AsyncKnifeHit = await ethers.getContractFactory('AsyncKnifeHit');
+    const asyncKnifeHitAddress = config.asyncKnifeHitAddress ?
         await (async () => {
             await upgrades.upgradeProxy(
-                config.asyncRspAddress,
-                AsyncRsp,
+                config.asyncKnifeHitAddress,
+                AsyncKnifeHit,
             )
-            console.log(`Contract AsyncRockScissorsPaper has been updated to address ${config.asyncRspAddress}`);
-            return config.asyncRspAddress;
+            console.log(`Contract AsyncKnifeHit has been updated to address ${config.asyncKnifeHitAddress}`);
+            return config.asyncKnifeHitAddress;
         })() :
+      
+
         await (async () => {
             const asyncGameHubAddress = config.asyncGameHubAddress;
-            assert.ok(
-                asyncGameHubAddress,
-                `Missing ${networkName}_ASYNC_GAME_HUB_ADDRESS from environment variables!`
-            );
-
-            const asyncRsp = await upgrades.deployProxy(
-                AsyncRsp,
+            // assert.ok(
+            //     asyncGameHubAddress,
+            //     `Missing ${networkName}_ASYNC_GAME_HUB_ADDRESS from environment variables!`
+            // );
+            // const asyncGameHubAddress = "a0x2A78894744bEb8D65c9Ae1AaF4cF0a4B88a9C4A3";
+            const asyncKnifeHit = await upgrades.deployProxy(
+                AsyncKnifeHit
+                ,
                 [asyncGameHubAddress]
             );
 
-            await asyncRsp.deployed();
-            console.log(`Contract AsyncRockScissorsPaper has been deployed to address ${asyncRsp.address}`);
-            return asyncRsp.address;
+            await asyncKnifeHit.deployed();
+            console.log(`Contract AsyncRockScissorsPaper has been deployed to address ${asyncKnifeHit.address}`);
+            return asyncKnifeHit.address;
         })();
 
-    console.log(`${networkName}_ASYNC_RSP_ADDRESS=${asyncRspAddress}`);
+    console.log(`${networkName}_ASYNC_RSP_ADDRESS=${asyncKnifeHitAddress}`);
 }
 
-deployAsyncRsp()
+deployAsyncKnifeHit()
     .then(() => process.exit(0))
     .catch((error) => {
         console.error(error);

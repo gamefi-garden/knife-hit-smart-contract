@@ -3,17 +3,27 @@ pragma solidity ^0.8.19;
 
 import {KnifeHitLogic} from "../libraries/KnifeHitLogic.sol";
 
-import {IAsyncGameHub} from "./IAsyncGameHub.sol";
+   
 
 interface IAsyncKnifeHit {
+     enum GamePhase {
+        None,
+        Playing,
+        End
+    }
     struct KnifeHitMatchData {
+        uint64 matchId ;
+        address token;
+        uint256 entry;
+        address creator;
         uint8 logicVersion;
-        uint32[][10] player1Actions;
-        uint32[][10] player2Actions;
+        GamePhase gamePhase;
+        address[] playerAddresses;
+        uint32[10][] player1Actions;
+        uint32[10][] player2Actions;
         KnifeHitLogic.KnifeHitGameConfig config;
     }
 
-    event GameHubUpdate(address newAddress);
 
     event KnifeHitMatchAbortion(uint64 matchId);
     event KnifeHitMatchCreation(uint64 matchId, address creator);
@@ -25,18 +35,16 @@ interface IAsyncKnifeHit {
 
     function version() external pure returns (string memory version);
 
-    function gameHub() external view returns (address gameHub);
 
     function getMatch(uint64 matchId) external view returns (
-        KnifeHitMatchData memory KnifeHitMatchData,
-        IAsyncGameHub.BriefMatchData memory gameHubMatchData
-    );
-    function getMatches(uint64[] calldata matchIds) external view returns (
-        KnifeHitMatchData[] memory knifeHitMatches,
-        IAsyncGameHub.BriefMatchData[] memory gameHubMatches
-    );
+        KnifeHitMatchData memory KnifeHitMatchData);
 
-    function abortMatch(uint64 matchId) external;
+    function getMatches(uint64[] calldata matchIds) external view returns (
+        KnifeHitMatchData[] memory knifeHitMatches);
+
+    function getGameConfig() external view returns (
+    KnifeHitLogic.KnifeHitGameConfig memory config);
+
 
     function findMatch(
         address _token,
