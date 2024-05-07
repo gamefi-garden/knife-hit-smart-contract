@@ -75,9 +75,5 @@ library Set {
         return _set.values.length == 0;
     }
 
-      function size(Uint64Set storage _set) internal view returns (uint256) {
-        return _set.values.length;
-    }
-
 
 }

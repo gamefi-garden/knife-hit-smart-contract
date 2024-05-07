@@ -16,10 +16,6 @@ abstract contract AsyncKnifeHitStorage is IAsyncKnifeHit {
     mapping(uint64 => KnifeHitMatchData) internal matches;
 
     Set.Uint64Set internal availableMatches;
-    Set.Uint64Set internal playingMatches;
-    mapping(address => Set.Uint64Set) internal playerPlayingMatches;
-    mapping(address => Set.Uint64Set) internal playerEndedMatches;
-
 
     KnifeHitLogic.KnifeHitGameConfig public gameConfig;
     uint64 public matchNumber;
@@ -48,7 +44,7 @@ ReentrancyGuardUpgradeable {
             easeType: 0,
             rotateSpeed: 5000,
             knifeCount: 9,
-            obstacle: 1073743104
+            obstacle: 1073743104 //800- 1000 - 3000
         }),
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
@@ -149,73 +145,93 @@ ReentrancyGuardUpgradeable {
         uint32[] memory _actions
     ) external payable nonReentrant whenNotPaused {
 
-       KnifeHitMatchData storage matchData = matches[matchNumber];
+        bool roomFound = false;
+        KnifeHitMatchData memory matchData;
+        uint64 matchId = 0;
+        console.log("[Find Room]");
 
-        console.log("[FindMatch]");
-        console.log(matchNumber);
-        console.log(matchData.playerAddresses[0] == msg.sender);
-        console.log(matchData.gamePhase == GamePhase.End);
-        console.log("Check");
-        
-        console.log(matchData.gamePhase == GamePhase.None);
-        console.log(matchData.gamePhase == GamePhase.Playing);
-        console.log(matchData.gamePhase == GamePhase.End);
-        console.log(matchData.playerAddresses[0] == msg.sender);
 
-        if ( matchData.playerAddresses[0] == msg.sender
-            || matchData.gamePhase == GamePhase.End
-            || matchData.gamePhase == GamePhase.None )
+        for (uint i = 0; i < availableMatches.values.length; i++) {
+
+                // matches
+            matchData = matches[availableMatches.values[i]];
+            console.log("Room Id");
+            console.log(availableMatches.values[i]);
+            console.log(matchData.gamePhase == GamePhase.Playing);
+            console.log(matchData.playerAddresses[0]);
+            console.log(matchData.playerAddresses[0] != msg.sender);
+
+            if (matchData.gamePhase == GamePhase.Playing
+            && matchData.playerAddresses[0] != msg.sender) {
+
+                matchId = matchData.matchId;
+                roomFound = true;
+                break;
+            }
+        }
+        console.log("[FindMatch] => roomFound: ");
+        console.log(roomFound);
+
+        if (!roomFound)
         {
-
             console.log("[Create Match]");
 
-            uint64 matchId = ++matchNumber;
+            matchId = ++matchNumber;
+            console.log("matchId:");
             console.log(matchId);
-
-            matchData.matchId = matchId;
-            matchData.entry = _entry;
-            matchData.token = _token;
-            matchData.creator = msg.sender;
-            matchData.playerAddresses[0] = msg.sender;
-            matchData.logicVersion = LOGIC_VERSION;
+            KnifeHitMatchData storage matchDataCreate = matches[matchId];
+            matchDataCreate.matchId = matchId;
+            matchDataCreate.entry = _entry;
+            matchDataCreate.token = _token;
+            matchDataCreate.creator = msg.sender;
+            matchDataCreate.playerAddresses[0] = msg.sender;
+            matchDataCreate.logicVersion = LOGIC_VERSION;
             
-            matchData.gamePhase = GamePhase.Playing;
-            matchData.player1Actions = _actions;
+            matchDataCreate.gamePhase = GamePhase.Playing;
+            matchDataCreate.player1Actions = _actions;
 
             uint32 score = KnifeHitLogic.CalculateScore(_actions,gameConfig);
             console.log(score);
+            // availableMatches.insert(matchId);
+            Set.insert(availableMatches,matchId);
 
         }
         else
         {
-                console.log("[Join Match]");
+            console.log("[Join Match]");
 
-                uint64 matchId = matchData.matchId;
-                console.log(matchId);
+            console.log("matchId:");
+            console.log(matchId);
+            KnifeHitMatchData storage matchDataJoin = matches[matchId];
 
-                matchData.playerAddresses[1] = msg.sender;
+            matchDataJoin.playerAddresses[1] = msg.sender;
 
-                matchData.player2Actions = _actions;
+            matchDataJoin.player2Actions = _actions;
 
-                address winner;
-                uint32 result = KnifeHitLogic.compare(
-                matchData.player1Actions,
-                matchData.player2Actions,
-                gameConfig
-                );
-
-                console.log(result);
-                if (result > 0) {
-                    winner = matchData.playerAddresses[0];
+            address winner;
+            uint32 result = KnifeHitLogic.compare(
+            matchDataJoin.player1Actions,
+            matchDataJoin.player2Actions,
+            gameConfig
+            );
+            console.log("result");
+            console.log(result);
+            if (result > 0) {
+                winner = matchDataJoin.playerAddresses[0];
+            emit KnifeHitMatchFulfillment(matchId, msg.sender, winner);
+            } else if (result < 0) {
+                winner = matchDataJoin.playerAddresses[1];
                 emit KnifeHitMatchFulfillment(matchId, msg.sender, winner);
-                } else if (result < 0) {
-                    winner = matchData.playerAddresses[1];
-                    emit KnifeHitMatchFulfillment(matchId, msg.sender, winner);
-                } else {
-                    winner = address(this);
-                    emit KnifeHitMatchFulfillment(matchId, msg.sender, ADDRESS_ZERO);
-                }
-                matchData.gamePhase = GamePhase.End;
+            } else {
+                winner = address(this);
+                emit KnifeHitMatchFulfillment(matchId, msg.sender, ADDRESS_ZERO);
+            }
+            matchDataJoin.gamePhase = GamePhase.End;
+// erase();
+            // matchId
+            // availableMatches.erase(matchId);
+            Set. erase(availableMatches,matchId);
+
         }
     }
 }
