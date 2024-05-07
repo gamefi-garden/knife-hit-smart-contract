@@ -15,6 +15,12 @@ import "hardhat/console.sol";
 abstract contract AsyncKnifeHitStorage is IAsyncKnifeHit {
     mapping(uint64 => KnifeHitMatchData) internal matches;
 
+    Set.Uint64Set internal availableMatches;
+    Set.Uint64Set internal playingMatches;
+    mapping(address => Set.Uint64Set) internal playerPlayingMatches;
+    mapping(address => Set.Uint64Set) internal playerEndedMatches;
+
+
     KnifeHitLogic.KnifeHitGameConfig public gameConfig;
     uint64 public matchNumber;
 
@@ -100,8 +106,6 @@ ReentrancyGuardUpgradeable {
         })]
         });
 
-        console.log("Init");
-        console.log(gameConfig.configs.length);
     }
 
     function version() external pure returns (string memory) {
@@ -142,15 +146,32 @@ ReentrancyGuardUpgradeable {
     function findMatch(
         address _token,
         uint256 _entry,
-        uint32[10][] memory _actions
+        uint32[] memory _actions
     ) external payable nonReentrant whenNotPaused {
 
        KnifeHitMatchData storage matchData = matches[matchNumber];
 
+        console.log("[FindMatch]");
+        console.log(matchNumber);
+        console.log(matchData.playerAddresses[0] == msg.sender);
+        console.log(matchData.gamePhase == GamePhase.End);
+        console.log("Check");
+        
+        console.log(matchData.gamePhase == GamePhase.None);
+        console.log(matchData.gamePhase == GamePhase.Playing);
+        console.log(matchData.gamePhase == GamePhase.End);
+        console.log(matchData.playerAddresses[0] == msg.sender);
+
         if ( matchData.playerAddresses[0] == msg.sender
-            || matchData.gamePhase == GamePhase.End )
+            || matchData.gamePhase == GamePhase.End
+            || matchData.gamePhase == GamePhase.None )
         {
+
+            console.log("[Create Match]");
+
             uint64 matchId = ++matchNumber;
+            console.log(matchId);
+
             matchData.matchId = matchId;
             matchData.entry = _entry;
             matchData.token = _token;
@@ -160,11 +181,17 @@ ReentrancyGuardUpgradeable {
             
             matchData.gamePhase = GamePhase.Playing;
             matchData.player1Actions = _actions;
+
+            uint32 score = KnifeHitLogic.CalculateScore(_actions,gameConfig);
+            console.log(score);
+
         }
         else
-            if(matchData.gamePhase == GamePhase.Playing)
-            {
+        {
+                console.log("[Join Match]");
+
                 uint64 matchId = matchData.matchId;
+                console.log(matchId);
 
                 matchData.playerAddresses[1] = msg.sender;
 
@@ -177,6 +204,7 @@ ReentrancyGuardUpgradeable {
                 gameConfig
                 );
 
+                console.log(result);
                 if (result > 0) {
                     winner = matchData.playerAddresses[0];
                 emit KnifeHitMatchFulfillment(matchId, msg.sender, winner);
@@ -187,6 +215,7 @@ ReentrancyGuardUpgradeable {
                     winner = address(this);
                     emit KnifeHitMatchFulfillment(matchId, msg.sender, ADDRESS_ZERO);
                 }
-            }
+                matchData.gamePhase = GamePhase.End;
+        }
     }
 }

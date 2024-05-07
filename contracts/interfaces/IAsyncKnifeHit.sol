@@ -18,9 +18,9 @@ interface IAsyncKnifeHit {
         address creator;
         uint8 logicVersion;
         GamePhase gamePhase;
-        address[] playerAddresses;
-        uint32[10][] player1Actions;
-        uint32[10][] player2Actions;
+        address[2] playerAddresses;
+        uint32[] player1Actions;
+        uint32[] player2Actions;
         KnifeHitLogic.KnifeHitGameConfig config;
     }
 
@@ -49,6 +49,6 @@ interface IAsyncKnifeHit {
     function findMatch(
         address _token,
         uint256 _entry,
-        uint32[10][] memory _actions
+        uint32[] memory _actions
     ) external payable ;
 }

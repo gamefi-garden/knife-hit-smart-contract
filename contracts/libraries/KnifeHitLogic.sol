@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
+import "hardhat/console.sol";
 
 library KnifeHitLogic {
     //10 Level
@@ -16,24 +17,48 @@ library KnifeHitLogic {
         uint32 knifeCount;
         uint32 obstacle; // obstacle bit mask | 1: khong the cam dao vao 
     }
- 
-    function CalculateScore(uint32[10][] memory action,KnifeHitGameConfig memory gameConfig) internal pure returns (uint32 s)
-    {
+     error InvalidAction(); 
 
+    function CalculateScore(uint32[] memory action,KnifeHitGameConfig memory gameConfig) internal pure returns (uint32 s)
+    {
         uint _score = 0;
 
         uint32 posOfKnife;
 
         for (uint level = 0; level < action.length; level++) 
         {
-
             KnifeHitLevelConfig memory levelConfig = gameConfig.configs[level];
             uint totalKnife = levelConfig.obstacle;
             uint32 timePerSection = levelConfig.rotateSpeed / gameConfig.ratio;
 
-            for (uint i = 0; i < action[level].length; i++)
+
+            uint32[] memory actions = new uint32[](32); // Assuming uint is 32 bits
+            uint32 actionsCount = 0;
+
+            for (uint32 i = 0; i < 32; i++) {
+                uint bitmask = 1 << i;
+                if ((action[level] & bitmask) != 0) {
+                    actions[actionsCount] = i * timePerSection; // Assuming actions are evenly spaced
+                    actionsCount++;
+                }
+            }
+
+                console.log(actionsCount);
+
+            uint32[] memory trimmedActions = new uint32[](actionsCount);
+            for (uint j = 0; j < actionsCount; j++) {
+                trimmedActions[j] = actions[j];
+                console.log(trimmedActions[j]);
+            }
+
+
+                console.log("Cacule");
+
+
+            // uint32[] memory trimmedActions = revertActionData(action[level],gameConfig,level);
+            for (uint i = 0; i < trimmedActions.length; i++)
             {
-                uint32 triggerTime = (action[level][i] + gameConfig.knifeMoveTime) % levelConfig.rotateSpeed;
+                uint32 triggerTime = (trimmedActions[i] + gameConfig.knifeMoveTime) % levelConfig.rotateSpeed;
 
                 posOfKnife = triggerTime / timePerSection;
 
@@ -41,11 +66,13 @@ library KnifeHitLogic {
                 bool hasValue = (totalKnife & bitmask) != 0;
 
                 if (hasValue) {
+                    console.log("InvalidAction");
 
-                    // return _score;
-                    break;
+                    revert InvalidAction();
                 }
                 _score++;
+                console.log(_score);
+
                 totalKnife |= bitmask;
             }
         }
@@ -53,9 +80,31 @@ library KnifeHitLogic {
         return uint32(_score);
     }
 
+    function revertActionData(uint actionData,KnifeHitGameConfig memory gameConfig, uint idx) public  returns (uint32[] memory) {
+        uint32 timePerSection = gameConfig.configs[idx].rotateSpeed / gameConfig.ratio;
+
+        uint32[] memory actions = new uint32[](32); // Assuming uint is 32 bits
+        uint32 actionsCount = 0;
+
+        for (uint32 i = 0; i < 32; i++) {
+            uint bitmask = 1 << i;
+            if ((actionData & bitmask) != 0) {
+                actions[actionsCount] = i * timePerSection; // Assuming actions are evenly spaced
+                actionsCount++;
+            }
+        }
+
+        uint32[] memory trimmedActions = new uint32[](actionsCount);
+        for (uint j = 0; j < actionsCount; j++) {
+            trimmedActions[j] = actions[j];
+        }
+
+        return trimmedActions;
+    }
+
     function compare(
-        uint32[10][] memory _player1Actions,
-        uint32[10][] memory _player2Actions,
+        uint32[] memory _player1Actions,
+        uint32[] memory _player2Actions,
         KnifeHitGameConfig memory configs
     ) internal pure returns (uint32) {
         uint32 result = CalculateScore(_player1Actions,configs) - CalculateScore(_player2Actions,configs);
