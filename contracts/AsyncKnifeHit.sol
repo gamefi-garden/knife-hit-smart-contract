@@ -36,7 +36,6 @@ ReentrancyGuardUpgradeable {
         
 
         gameConfig = KnifeHitLogic.KnifeHitGameConfig({
-        knifeMoveTime: 300,
         gameDuration: 30000,
         ratio: 50,
         configs: [

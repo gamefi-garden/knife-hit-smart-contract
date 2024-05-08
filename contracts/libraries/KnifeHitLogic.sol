@@ -5,7 +5,6 @@ import "hardhat/console.sol";
 library KnifeHitLogic {
     //10 Level
     struct KnifeHitGameConfig {
-        uint32 knifeMoveTime;
         uint32 gameDuration;
         uint32 ratio;
         KnifeHitLevelConfig[10] configs;
@@ -51,15 +50,13 @@ library KnifeHitLogic {
 
                 console.log(trimmedActions[j]);
             }
-
-
             console.log("Cacule Score");
 
 
             // uint32[] memory trimmedActions = revertActionData(action[level],gameConfig,level);
             for (uint i = 0; i < trimmedActions.length; i++)
             {
-                uint32 triggerTime = (trimmedActions[i] + gameConfig.knifeMoveTime) % levelConfig.rotateSpeed;
+                uint32 triggerTime = (trimmedActions[i]) % levelConfig.rotateSpeed;
 
                 posOfKnife = triggerTime / timePerSection;
 
