@@ -24,7 +24,7 @@ interface IAsyncKnifeHit {
         KnifeHitLogic.KnifeHitGameConfig config;
     }
 
-
+    event Initialize(); 
     event KnifeHitMatchAbortion(uint64 matchId);
     event KnifeHitMatchCreation(uint64 matchId, address creator);
     event KnifeHitMatchFulfillment(uint64 matchId, address player, address winner);
@@ -35,12 +35,23 @@ interface IAsyncKnifeHit {
 
     function version() external pure returns (string memory version);
 
+    function getPlayingMatchesOf(address _player) external view returns (uint64[] memory);
+    function getEndMatchesOf(address _player) external view returns (uint64[] memory);
+
+    function getPlayingMatchDataOf(address _player) external view returns (
+        KnifeHitMatchData[] memory knifeHitMatches);
+
+    function getEndMatchDataOf(address _player) external view returns (
+        KnifeHitMatchData[] memory knifeHitMatches);
+
 
     function getMatch(uint64 matchId) external view returns (
         KnifeHitMatchData memory KnifeHitMatchData);
 
-    function getMatches(uint64[] calldata matchIds) external view returns (
+    function getMatches(uint64[] memory matchIds) external view returns (
         KnifeHitMatchData[] memory knifeHitMatches);
+
+  
 
     function getGameConfig() external view returns (
     KnifeHitLogic.KnifeHitGameConfig memory config);
@@ -50,5 +61,5 @@ interface IAsyncKnifeHit {
         address _token,
         uint256 _entry,
         uint32[] memory _actions
-    ) external payable ;
+    ) external payable returns (uint64);
 }

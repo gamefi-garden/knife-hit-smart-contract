@@ -16,7 +16,7 @@ async function deployAsyncKnifeHit() {
           })()
           : await (async () => {
               const treasuryAddress = config.treasuryAddress;
-              console.log(treasuryAddress);
+              console.log(`treasuryAddress ${treasuryAddress}`);
 
               assert.ok(
                   treasuryAddress,
@@ -29,6 +29,7 @@ async function deployAsyncKnifeHit() {
             let bigBlind = 200;
             const poker = await upgrades.deployProxy(knifeHit, [
                 treasuryAddress]);
+                
             await poker.deployed();
             console.log(`Knife Hit contract is deployed to ${poker.address}`);
             return poker.address;

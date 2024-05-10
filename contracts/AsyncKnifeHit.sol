@@ -12,10 +12,14 @@ import {Set} from "contracts/libraries/Set.sol";
 import "hardhat/console.sol";
 
 
+
 abstract contract AsyncKnifeHitStorage is IAsyncKnifeHit {
     mapping(uint64 => KnifeHitMatchData) internal matches;
 
     Set.Uint64Set internal availableMatches;
+
+    mapping(address => Set.Uint64Set) internal playerPlayingMatches;
+    mapping(address => Set.Uint64Set) internal playerEndedMatches;
 
     KnifeHitLogic.KnifeHitGameConfig public gameConfig;
     uint64 public matchNumber;
@@ -34,44 +38,47 @@ ReentrancyGuardUpgradeable {
         __Pausable_init_unchained();
         __ReentrancyGuard_init_unchained();
         
+        console.log("initialize");
+
+        console.log(_treasury);
 
         gameConfig = KnifeHitLogic.KnifeHitGameConfig({
         gameDuration: 30000,
-        ratio: 50,
+        ratio: 30,
         configs: [
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
-            rotateSpeed: 5000,
+            rotateSpeed: 6000,
             knifeCount: 9,
-            obstacle: 1073743104 //800- 1000 - 3000
+            obstacle: 32816 //800- 1000 - 3000
         }),
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
-            rotateSpeed: 5000,
+            rotateSpeed: 6000,
+            knifeCount: 4,
+            obstacle: 32816
+        }),
+        KnifeHitLogic.KnifeHitLevelConfig({
+            easeType: 0,
+            rotateSpeed: 6000,
             knifeCount: 4,
             obstacle: 1073782784
         }),
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
-            rotateSpeed: 5000,
+            rotateSpeed: 6000,
             knifeCount: 4,
             obstacle: 1073782784
         }),
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
-            rotateSpeed: 5000,
+            rotateSpeed: 6000,
             knifeCount: 4,
             obstacle: 1073782784
         }),
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
-            rotateSpeed: 5000,
-            knifeCount: 4,
-            obstacle: 1073782784
-        }),
-        KnifeHitLogic.KnifeHitLevelConfig({
-            easeType: 0,
-            rotateSpeed: 5000,
+            rotateSpeed: 6000,
             knifeCount: 4,
             obstacle: 1073782784
         }),
@@ -101,6 +108,8 @@ ReentrancyGuardUpgradeable {
         })]
         });
 
+        emit Initialize();
+
     }
 
     function version() external pure returns (string memory) {
@@ -116,9 +125,8 @@ ReentrancyGuardUpgradeable {
         return matchData;
     }
 
-    function getMatches(uint64[] calldata matchIds) external view returns (
-        KnifeHitMatchData[] memory
-    ) {
+
+    function getMatches(uint64[] memory matchIds) public view returns (KnifeHitMatchData[] memory) {
         uint256 matchNumber = matchIds.length;
         KnifeHitMatchData[] memory rspMatches = new KnifeHitMatchData[](matchNumber);
         for (uint256 i = 0; i < matchNumber; ++i) {
@@ -130,19 +138,34 @@ ReentrancyGuardUpgradeable {
    function getGameConfig() external view returns (
         KnifeHitLogic.KnifeHitGameConfig memory
     ) {
-        console.log("getGameConfig");
-        console.log(gameConfig.configs.length);
 
         return gameConfig;
     }
 
+   function getPlayingMatchDataOf(address _player) external view returns (KnifeHitMatchData[] memory) {
+        uint64[] memory matchIds = getPlayingMatchesOf(_player);
+        return getMatches(matchIds);
+    }
+
+    function getEndMatchDataOf(address _player) external view returns (KnifeHitMatchData[] memory) {
+        uint64[] memory matchIds = getEndMatchesOf(_player);
+        return getMatches(matchIds);
+    }
+
+    function getEndMatchesOf(address _player) public view returns (uint64[] memory) {
+        return playerEndedMatches[_player].values;
+    }
+
+    function getPlayingMatchesOf(address _player) public view returns (uint64[] memory) {
+        return playerPlayingMatches[_player].values;
+    }
 
 
     function findMatch(
         address _token,
         uint256 _entry,
         uint32[] memory _actions
-    ) external payable nonReentrant whenNotPaused {
+    ) external payable nonReentrant whenNotPaused returns (uint64){
 
         bool roomFound = false;
         KnifeHitMatchData memory matchData;
@@ -193,6 +216,7 @@ ReentrancyGuardUpgradeable {
             console.log(score);
             // availableMatches.insert(matchId);
             Set.insert(availableMatches,matchId);
+            Set.insert(playerPlayingMatches[msg.sender],matchId);
 
         }
         else
@@ -231,6 +255,12 @@ ReentrancyGuardUpgradeable {
             // availableMatches.erase(matchId);
             Set. erase(availableMatches,matchId);
 
+            Set.erase(playerPlayingMatches[msg.sender],matchId);
+            Set.insert(playerEndedMatches[msg.sender],matchId);
+
         }
+
+        return matchId;
+
     }
 }
