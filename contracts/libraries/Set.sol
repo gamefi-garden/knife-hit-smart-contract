@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
+import "hardhat/console.sol";
 
 library Set {
     struct AddressSet {
@@ -21,6 +22,8 @@ library Set {
 
     // AddressSet
     function insert(AddressSet storage _set, address _value) internal {
+           console.log("Uint64Set");
+        console.log(_value);
         if (_set.positions[_value] != 0) revert DuplicatedAddressValue(_value);
         _set.values.push(_value);
         _set.positions[_value] = uint64(_set.values.length);
@@ -49,8 +52,15 @@ library Set {
         return _set.values.length;
     }
 
+    function size(Uint64Set storage _set) internal view returns (uint256) {
+        return _set.values.length;
+    }
+
     // Uint64Set
     function insert(Uint64Set storage _set, uint64 _value) internal {
+        console.log("Uint64Set");
+        console.log(_value);
+
         if (_set.positions[_value] != 0) revert DuplicatedUint64Value(_value);
         _set.values.push(_value);
         _set.positions[_value] = uint64(_set.values.length);

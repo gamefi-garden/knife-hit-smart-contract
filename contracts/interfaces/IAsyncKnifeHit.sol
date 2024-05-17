@@ -16,13 +16,18 @@ interface IAsyncKnifeHit {
         address token;
         uint256 entry;
         address creator;
+        address winer;
         uint8 logicVersion;
         GamePhase gamePhase;
+
         address[2] playerAddresses;
+
         uint32[] player1Actions;
         uint32[] player2Actions;
-        KnifeHitLogic.KnifeHitGameConfig config;
+        uint32[2] playerScore;
+
     }
+    event KnifeFindMatch(uint64 matchId);
 
     event Initialize(); 
     event KnifeHitMatchAbortion(uint64 matchId);
@@ -61,5 +66,5 @@ interface IAsyncKnifeHit {
         address _token,
         uint256 _entry,
         uint32[] memory _actions
-    ) external payable returns (uint64);
+    ) external payable ;
 }

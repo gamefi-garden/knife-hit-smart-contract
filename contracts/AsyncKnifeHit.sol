@@ -108,6 +108,41 @@ ReentrancyGuardUpgradeable {
         })]
         });
 
+        
+        Set.insert(playerPlayingMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],1);
+        KnifeHitMatchData storage matchData1 = matches[1];
+        matchData1.playerScore[0] = 10;
+        matchData1.gamePhase == GamePhase.Playing;
+
+        Set.insert(playerPlayingMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],2);
+        KnifeHitMatchData storage matchData2 = matches[2];
+        matchData2.playerScore[0] = 10;
+        matchData2.gamePhase == GamePhase.Playing;
+
+        Set.insert(playerPlayingMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],3);
+        KnifeHitMatchData storage matchData3 = matches[3];
+        matchData3.playerScore[0] = 10;
+        matchData3.gamePhase == GamePhase.Playing;
+      
+
+        Set.insert(playerEndedMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],4);
+        KnifeHitMatchData storage matchData4 = matches[4];
+        matchData4.playerScore[0] = 10;
+        matchData4.playerScore[1] = 10;
+        matchData4.gamePhase == GamePhase.End;
+
+        Set.insert(playerEndedMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],5);
+     
+        KnifeHitMatchData storage matchData5 = matches[5];
+        matchData5.playerScore[0] = 5;
+        matchData5.playerScore[1] = 10;
+
+        Set.insert(playerEndedMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],6);
+        KnifeHitMatchData storage matchData6 = matches[6];
+
+        matchData6.playerScore[0] = 10;
+        matchData6.playerScore[1] = 5;
+
         emit Initialize();
 
     }
@@ -115,7 +150,6 @@ ReentrancyGuardUpgradeable {
     function version() external pure returns (string memory) {
         return "v0.0.1";
     }
-
 
 
     function getMatch(uint64 _matchId) external view returns (
@@ -132,6 +166,10 @@ ReentrancyGuardUpgradeable {
         for (uint256 i = 0; i < matchNumber; ++i) {
             rspMatches[i] = matches[matchIds[i]];
         }
+        console.log("getMatches");
+
+        console.log(matchIds.length);
+
         return rspMatches;
     }
 
@@ -144,11 +182,15 @@ ReentrancyGuardUpgradeable {
 
    function getPlayingMatchDataOf(address _player) external view returns (KnifeHitMatchData[] memory) {
         uint64[] memory matchIds = getPlayingMatchesOf(_player);
+        console.log("getPlayingMatchDataOf");
+        console.log(matchIds.length);
         return getMatches(matchIds);
     }
 
     function getEndMatchDataOf(address _player) external view returns (KnifeHitMatchData[] memory) {
         uint64[] memory matchIds = getEndMatchesOf(_player);
+        console.log("getPlayinggetEndMatchDataOfMatchDataOf");
+        console.log(matchIds.length);
         return getMatches(matchIds);
     }
 
@@ -165,7 +207,7 @@ ReentrancyGuardUpgradeable {
         address _token,
         uint256 _entry,
         uint32[] memory _actions
-    ) external payable nonReentrant whenNotPaused returns (uint64){
+    ) external payable nonReentrant whenNotPaused {
 
         bool roomFound = false;
         KnifeHitMatchData memory matchData;
@@ -177,11 +219,11 @@ ReentrancyGuardUpgradeable {
 
                 // matches
             matchData = matches[availableMatches.values[i]];
-            console.log("Room Id");
-            console.log(availableMatches.values[i]);
-            console.log(matchData.gamePhase == GamePhase.Playing);
-            console.log(matchData.playerAddresses[0]);
-            console.log(matchData.playerAddresses[0] != msg.sender);
+            // console.log("Room Id");
+            // console.log(availableMatches.values[i]);
+            // console.log(matchData.gamePhase == GamePhase.Playing);
+            // console.log(matchData.playerAddresses[0]);
+            // console.log(matchData.playerAddresses[0] != msg.sender);
 
             if (matchData.gamePhase == GamePhase.Playing
             && matchData.playerAddresses[0] != msg.sender) {
@@ -191,15 +233,14 @@ ReentrancyGuardUpgradeable {
                 break;
             }
         }
-        console.log("[FindMatch] => roomFound: ");
-        console.log(roomFound);
+        // console.log("[FindMatch] => roomFound: ");
+        // console.log(roomFound);
 
         if (!roomFound)
         {
-            console.log("[Create Match]");
 
             matchId = ++matchNumber;
-            console.log("matchId:");
+            // console.log("matchId:");
             console.log(matchId);
             KnifeHitMatchData storage matchDataCreate = matches[matchId];
             matchDataCreate.matchId = matchId;
@@ -208,21 +249,34 @@ ReentrancyGuardUpgradeable {
             matchDataCreate.creator = msg.sender;
             matchDataCreate.playerAddresses[0] = msg.sender;
             matchDataCreate.logicVersion = LOGIC_VERSION;
-            
             matchDataCreate.gamePhase = GamePhase.Playing;
             matchDataCreate.player1Actions = _actions;
 
             uint32 score = KnifeHitLogic.CalculateScore(_actions,gameConfig);
             console.log(score);
             // availableMatches.insert(matchId);
+
+            console.log("[Create Match]");
+            console.log("matchId");
+            console.log(matchId);
+
+            console.log(Set.size(availableMatches));
+
             Set.insert(availableMatches,matchId);
+                        console.log(Set.size(availableMatches));
+
+            console.log("=======");
+            console.log(Set.size(playerPlayingMatches[msg.sender]));
+
             Set.insert(playerPlayingMatches[msg.sender],matchId);
+            // playerPlayingMatches[msg.sender].insert(matchId);
+            // playerPlayingMatches[msg.sender].insert(matchId);
+        
 
         }
         else
         {
             console.log("[Join Match]");
-
             console.log("matchId:");
             console.log(matchId);
             KnifeHitMatchData storage matchDataJoin = matches[matchId];
@@ -250,17 +304,20 @@ ReentrancyGuardUpgradeable {
                 emit KnifeHitMatchFulfillment(matchId, msg.sender, ADDRESS_ZERO);
             }
             matchDataJoin.gamePhase = GamePhase.End;
-// erase();
-            // matchId
-            // availableMatches.erase(matchId);
-            Set. erase(availableMatches,matchId);
+            matchDataJoin.winer = winner;
 
-            Set.erase(playerPlayingMatches[msg.sender],matchId);
+            Set.erase(availableMatches,matchId);
+
+            address player0 = matchDataJoin.playerAddresses[0];
+
+            Set.erase(playerPlayingMatches[player0],matchId);
+            Set.insert(playerEndedMatches[player0],matchId);
+
             Set.insert(playerEndedMatches[msg.sender],matchId);
 
         }
 
-        return matchId;
+        emit KnifeFindMatch(matchId);
 
     }
 }

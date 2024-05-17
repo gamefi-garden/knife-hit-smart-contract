@@ -46,11 +46,11 @@ library KnifeHitLogic {
             uint32[] memory trimmedActions = new uint32[](actionsCount);
             for (uint j = 0; j < actionsCount; j++) {
                 trimmedActions[j] = actions[j];
-                console.log("Action Time: ");
+                // console.log("Action Time: ");
 
-                console.log(trimmedActions[j]);
+                // console.log(trimmedActions[j]);
             }
-            console.log("Cacule Score");
+            // console.log("Cacule Score");
 
 
             // uint32[] memory trimmedActions = revertActionData(action[level],gameConfig,level);
@@ -62,13 +62,13 @@ library KnifeHitLogic {
 
                 uint bitmask = 1 << posOfKnife;
                 bool hasValue = (totalKnife & bitmask) != 0;
-                console.log("posOfKnife");
-                console.log(posOfKnife);
-                console.log("bitmask");
+                // console.log("posOfKnife");
+                // console.log(posOfKnife);
+                // console.log("bitmask");
 
-                console.log(bitmask);
-                console.log("totalKnife");
-                console.log(totalKnife);
+                // console.log(bitmask);
+                // console.log("totalKnife");
+                // console.log(totalKnife);
 
                 if (hasValue) {
                     console.log("InvalidAction");
@@ -76,12 +76,12 @@ library KnifeHitLogic {
                     revert InvalidAction();
                 }
                 _score++;
-                console.log(_score);
+                // console.log(_score);
 
                 totalKnife |= bitmask;
-                console.log("totalKnifeV2 :");
-                console.log(totalKnife);
-                console.log("==========");
+                // console.log("totalKnifeV2 :");
+                // console.log(totalKnife);
+                // console.log("==========");
 
             }
         }
