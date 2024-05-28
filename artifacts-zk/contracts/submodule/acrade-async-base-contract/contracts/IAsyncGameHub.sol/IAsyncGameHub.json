@@ -1,0 +1,638 @@
+{
+  "_format": "hh-zksolc-artifact-1",
+  "contractName": "IAsyncGameHub",
+  "sourceName": "contracts/submodule/acrade-async-base-contract/contracts/IAsyncGameHub.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "FailedTransfer",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "GameNotIntegrable",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InsufficientFunds",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidMatchAborting",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidMatchEnding",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidMatchId",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidParams",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidScoreSetting",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotPlayerOfTheMatch",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Unauthorized",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "newValue",
+          "type": "uint8"
+        }
+      ],
+      "name": "FeePercentageUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAddress",
+          "type": "address"
+        }
+      ],
+      "name": "GameLibraryUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        }
+      ],
+      "name": "MatchAbortion",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "creator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "entry",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "playerNumber",
+          "type": "uint8"
+        }
+      ],
+      "name": "MatchCreation",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        }
+      ],
+      "name": "MatchEnd",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        }
+      ],
+      "name": "MatchFulfillment",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        }
+      ],
+      "name": "MatchJoin",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "score",
+          "type": "uint256"
+        }
+      ],
+      "name": "ScoreSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAddress",
+          "type": "address"
+        }
+      ],
+      "name": "TreasuryUpdate",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        }
+      ],
+      "name": "endMatch",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "feePercentage",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "entry",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint8",
+          "name": "playerNumber",
+          "type": "uint8"
+        }
+      ],
+      "name": "findMatch",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "gameLibrary",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAbortedMatches",
+      "outputs": [
+        {
+          "internalType": "uint64[]",
+          "name": "",
+          "type": "uint64[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        }
+      ],
+      "name": "getMatchPlayerAddresses",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        }
+      ],
+      "name": "getMatchPlayers",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "score",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint40",
+              "name": "deadline",
+              "type": "uint40"
+            },
+            {
+              "internalType": "uint8",
+              "name": "index",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct IAsyncGameHub.PlayerData[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        }
+      ],
+      "name": "getPlayerLatestUnfinishedMatches",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "id",
+              "type": "uint64"
+            },
+            {
+              "internalType": "address[]",
+              "name": "playerAddresses",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "entry",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "gameAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint40",
+              "name": "playingTimeLimit",
+              "type": "uint40"
+            },
+            {
+              "internalType": "uint8",
+              "name": "playerNumber",
+              "type": "uint8"
+            },
+            {
+              "internalType": "enum IAsyncGameHub.MatchPhase",
+              "name": "phase",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "playerSubmissions",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "logicVersion",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "bestPlayer",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct IAsyncGameHub.BriefMatchData[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        }
+      ],
+      "name": "getPlayerPlayingMatches",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "id",
+              "type": "uint64"
+            },
+            {
+              "internalType": "address[]",
+              "name": "playerAddresses",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "entry",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "gameAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint40",
+              "name": "playingTimeLimit",
+              "type": "uint40"
+            },
+            {
+              "internalType": "uint8",
+              "name": "playerNumber",
+              "type": "uint8"
+            },
+            {
+              "internalType": "enum IAsyncGameHub.MatchPhase",
+              "name": "phase",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "playerSubmissions",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "logicVersion",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "bestPlayer",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct IAsyncGameHub.BriefMatchData[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPlayingMatches",
+      "outputs": [
+        {
+          "internalType": "uint64[]",
+          "name": "",
+          "type": "uint64[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_matchId",
+          "type": "uint64"
+        }
+      ],
+      "name": "isMatchEndable",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_matchId",
+          "type": "uint64"
+        }
+      ],
+      "name": "isMatchEnded",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "matchNumber",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "score",
+          "type": "uint256"
+        }
+      ],
+      "name": "setScore",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "treasury",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "factoryDeps": {}
+}

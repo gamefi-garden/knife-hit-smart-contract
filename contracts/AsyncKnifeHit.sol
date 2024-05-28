@@ -9,12 +9,16 @@ import {IERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20
 import {IAsyncKnifeHit} from "./interfaces/IAsyncKnifeHit.sol";
 import {KnifeHitLogic} from "./libraries/KnifeHitLogic.sol";
 import {Set} from "contracts/libraries/Set.sol";
+import {IAsyncGameHub} from "./submodule/acrade-async-base-contract/contracts/IAsyncGameHub.sol";
+import {BaseAsyncMatchingGame} from "contracts/submodule/acrade-async-base-contract/contracts/BaseAsyncMatchingGame.sol";
+
 import "hardhat/console.sol";
 
 
 
 abstract contract AsyncKnifeHitStorage is IAsyncKnifeHit {
     mapping(uint64 => KnifeHitMatchData) internal matches;
+
 
     Set.Uint64Set internal availableMatches;
 
@@ -23,9 +27,6 @@ abstract contract AsyncKnifeHitStorage is IAsyncKnifeHit {
 
     KnifeHitLogic.KnifeHitGameConfig public gameConfig;
 
-    address public treasury;
-    uint8 public feePercentage;
-
     uint64 public matchNumber;
 
 }
@@ -33,17 +34,16 @@ contract AsyncKnifeHit is
 AsyncKnifeHitStorage,
 OwnableUpgradeable,
 PausableUpgradeable,
+BaseAsyncMatchingGame,
 ReentrancyGuardUpgradeable {
     address constant private ADDRESS_ZERO = address(0);
     uint8 constant private LOGIC_VERSION = 1;
 
-    function initialize(address _treasury,uint8 _feePercentage) external initializer {
+    function onInitialized() override internal{
+
         __Ownable_init_unchained();
         __Pausable_init_unchained();
         __ReentrancyGuard_init_unchained();
-
-        treasury = _treasury;
-        feePercentage = _feePercentage;
 
         gameConfig = KnifeHitLogic.KnifeHitGameConfig({
         gameDuration: 30000,
@@ -116,31 +116,10 @@ ReentrancyGuardUpgradeable {
 
     }
 
-    function version() external pure returns (string memory) {
+    function version() external pure override(BaseAsyncMatchingGame, IAsyncKnifeHit) returns (string memory) {
         return "v0.0.1";
     }
 
-
-    function getMatch(uint64 _matchId) external view returns (
-        KnifeHitMatchData memory
-    ) {
-        KnifeHitMatchData memory matchData = matches[_matchId];
-        return matchData;
-    }
-
-
-    function getMatches(uint64[] memory matchIds) public view returns (KnifeHitMatchData[] memory) {
-        uint256 matchNumber = matchIds.length;
-        KnifeHitMatchData[] memory rspMatches = new KnifeHitMatchData[](matchNumber);
-        for (uint256 i = 0; i < matchNumber; ++i) {
-            rspMatches[i] = matches[matchIds[i]];
-        }
-        console.log("getMatches");
-
-        console.log(matchIds.length);
-
-        return rspMatches;
-    }
 
    function getGameConfig() external view returns (
         KnifeHitLogic.KnifeHitGameConfig memory
@@ -149,171 +128,86 @@ ReentrancyGuardUpgradeable {
         return gameConfig;
     }
 
-   function getPlayingMatchDataOf(address _player) external view returns (KnifeHitMatchData[] memory) {
-        uint64[] memory matchIds = getPlayingMatchesOf(_player);
-        console.log("getPlayingMatchDataOf");
-        console.log(matchIds.length);
-        return getMatches(matchIds);
-    }
 
-    function getEndMatchDataOf(address _player) external view returns (KnifeHitMatchData[] memory) {
-        uint64[] memory matchIds = getEndMatchesOf(_player);
-        console.log("getPlayinggetEndMatchDataOfMatchDataOf");
-        console.log(matchIds.length);
-        return getMatches(matchIds);
-    }
-
-    function getEndMatchesOf(address _player) public view returns (uint64[] memory) {
-        return playerEndedMatches[_player].values;
-    }
-
-    function getPlayingMatchesOf(address _player) public view returns (uint64[] memory) {
-        return playerPlayingMatches[_player].values;
-    }
-
-
-    function findMatch(
+    function findMatchV2(
         address _token,
         uint256 _entry,
         uint32[] memory _actions
     ) external payable nonReentrant whenNotPaused {
 
 
+        console.log("findMatchV2");
         if (_token == ADDRESS_ZERO) {
             if (_entry > msg.value) revert InsufficientFunds();
         } else {
             IERC20Upgradeable(_token).transferFrom(msg.sender, address(this), _entry);
         }
 
+        console.log("findMatch");
 
-        bool roomFound = false;
-        KnifeHitMatchData memory matchData;
-        uint64 matchId = 0;
 
-        for (uint i = 0; i < availableMatches.values.length; i++) {
+        uint64 matchId = IAsyncGameHub(asyncGameHubAddress).findMatch{value: msg.value}(
+            msg.sender,
+            _token,
+            _entry,
+            2
+        );
 
-            matchData = matches[availableMatches.values[i]];
-            if (matchData.gamePhase == GamePhase.Playing
-            && matchData.playerAddresses[0] != msg.sender) {
 
-                matchId = matchData.matchId;
-                roomFound = true;
-                break;
-            }
-        }
-        console.log("[FindMatch] => roomFound: ");
-        console.log(roomFound);
+        console.log(matchId);
 
-        if (!roomFound)
+        KnifeHitMatchData storage matchData = matches[matchId];
+
+
+        address[] memory playerAddresses = IAsyncGameHub(asyncGameHubAddress).getMatchPlayerAddresses(matchId);
+
+        if (msg.sender == playerAddresses[0]) 
         {
-            matchId = ++matchNumber;
-            KnifeHitMatchData storage matchDataCreate = matches[matchId];
-            matchDataCreate.matchId = matchId;
-            matchDataCreate.entry = _entry;
-            matchDataCreate.token = _token;
-            matchDataCreate.creator = msg.sender;
-            matchDataCreate.playerAddresses[0] = msg.sender;
-            matchDataCreate.logicVersion = LOGIC_VERSION;
-            matchDataCreate.gamePhase = GamePhase.Playing;
-            matchDataCreate.player1Actions = _actions;
+            matchData.playerAddresses[0] = msg.sender;
+            matchData.player1Actions = _actions;
 
+            matchData.logicVersion = LOGIC_VERSION;
             uint32 score = KnifeHitLogic.CalculateScore(_actions,gameConfig);
-            matchDataCreate.playerScore[0] = score;
 
-            console.log("[Create Match]");
-            console.log(score);
-
-            
-
-            Set.insert(availableMatches,matchId);
-
-
-            Set.insert(playerPlayingMatches[msg.sender],matchId);
+            IAsyncGameHub(asyncGameHubAddress).setScore( matchId,
+                msg.sender,
+                score);
         }
         else
         {
-            console.log("[Join Match]");
-            console.log("matchId:");
-            console.log(matchId);
-            KnifeHitMatchData storage matchDataJoin = matches[matchId];
-
-            matchDataJoin.playerAddresses[1] = msg.sender;
-
-            matchDataJoin.player2Actions = _actions;
+            matchData.playerAddresses[1] = msg.sender;
+            matchData.player2Actions = _actions;
 
             uint32 score = KnifeHitLogic.CalculateScore(_actions,gameConfig);
-            matchDataJoin.playerScore[1] = score;
 
-            address winner;
             uint32 result = KnifeHitLogic.compare(
-            matchDataJoin.player1Actions,
-            matchDataJoin.player2Actions,
+            matchData.player1Actions,
+            matchData.player2Actions,
             gameConfig
             );
+
             console.log("result");
             console.log(result);
+            address winner;
+
             if (result > 0) {
-                winner = matchDataJoin.playerAddresses[0];
+                winner = matchData.playerAddresses[0];
             emit KnifeHitMatchFulfillment(matchId, msg.sender, winner);
             } else if (result < 0) {
-                winner = matchDataJoin.playerAddresses[1];
+                winner = matchData.playerAddresses[1];
                 emit KnifeHitMatchFulfillment(matchId, msg.sender, winner);
             } else {
                 winner = address(this);
                 emit KnifeHitMatchFulfillment(matchId, msg.sender, ADDRESS_ZERO);
-            }
-            matchDataJoin.gamePhase = GamePhase.End;
-            matchDataJoin.winer = winner;
 
-            Set.erase(availableMatches,matchId);
-            address player0 = matchDataJoin.playerAddresses[0];
-            Set.erase(playerPlayingMatches[player0],matchId);
-            Set.insert(playerEndedMatches[player0],matchId);
-            Set.insert(playerEndedMatches[msg.sender],matchId);
-
-            uint256 entry = matchDataJoin.entry;
-            address token = matchDataJoin.token;
-
-            uint256 totalValue = entry * matchData.playerAddresses.length;
-
-            if (matchDataJoin.winer != ADDRESS_ZERO)
-            {
-                uint256 fee = totalValue * feePercentage / 100;
-                uint256 prize = totalValue - fee;
-
-                 if (token == ADDRESS_ZERO) {
-                     if (fee != 0) {
-                        (bool success, ) = treasury.call{value: fee}("");
-                            if (!success) revert FailedTransfer();
-                        }
-                        if (prize != 0) {
-                            (bool success, ) = matchDataJoin.winer.call{value: prize}("");
-                            if (!success) revert FailedTransfer();
-                        }
-                 }
-                 else{
-                     if (fee != 0) {
-                            IERC20Upgradeable(token).transferFrom(msg.sender,treasury, fee);
-                        }
-                        if (prize != 0) {
-                            IERC20Upgradeable(token).transferFrom(msg.sender,matchDataJoin.winer, prize);
-                        }
-                 }
-
-
-            }
-            else
-            {
-                    if (token == ADDRESS_ZERO) {
-                        (bool success,) = treasury.call{value: totalValue}("");
-                        if (!success) revert FailedTransfer();
-                    } else {
-                        IERC20Upgradeable(token).transferFrom(msg.sender,treasury, totalValue);
-                    }
-            }
+            IAsyncGameHub(asyncGameHubAddress).setScore(
+            matchId,
+            msg.sender,
+            score
+            );
         }
-
-        emit KnifeFindMatch(matchId);
+    }
     }
 
+  
 }

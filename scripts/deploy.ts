@@ -45,8 +45,7 @@ async function main() {
     const networkName = network.name.toUpperCase();
 	const networkConfig = network.config as any;
 
-	let feePercentage = 20;
-	const treasuryAddress = networkConfig.treasuryAddress;
+	const gameHubAddress = networkConfig.asyncGameHubAddress;
 
 	const wallet = new Wallet(networkConfig.deployerKey);
 
@@ -59,7 +58,7 @@ async function main() {
 					deployer.zkWallet,
 					networkConfig.knifeHitAddress,
 					KnifeHit,
-					[treasuryAddress,feePercentage],
+					[],
 					{ initializer: "initialize" });
 				console.log(
 					`KnifeHit contract is upgraded to ${networkConfig.knifeHitAddress}`
@@ -70,11 +69,12 @@ async function main() {
 				const knifeHit =await hre.zkUpgrades.deployProxy(
 					deployer.zkWallet,
 					KnifeHit,
-					[treasuryAddress,feePercentage],
+					[],
 					{ initializer: "initialize" });
+
 				await knifeHit.waitForDeployment();
 				knifeHit.connect(deployer.zkWallet);
-				// await knifeHit.updateAsyncGameHubAddress(networkConfig.asyncGameHubAddress);
+				await knifeHit.updateAsyncGameHubAddress(networkConfig.asyncGameHubAddress);
 				console.log(`knifeHit contract is deployed to ${await knifeHit.getAddress()}`);
 				return  await knifeHit.getAddress();
 		  })();

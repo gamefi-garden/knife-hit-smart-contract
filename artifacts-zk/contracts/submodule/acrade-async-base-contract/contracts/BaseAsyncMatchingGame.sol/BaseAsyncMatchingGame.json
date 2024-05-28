@@ -1,0 +1,328 @@
+{
+  "_format": "hh-zksolc-artifact-1",
+  "contractName": "BaseAsyncMatchingGame",
+  "sourceName": "contracts/submodule/acrade-async-base-contract/contracts/BaseAsyncMatchingGame.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "enum BaseAsyncMatchingGame.ErrorCode",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "name": "RevertErrorCode",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAddress",
+          "type": "address"
+        }
+      ],
+      "name": "GameHubAddressUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "version",
+          "type": "uint8"
+        }
+      ],
+      "name": "Initialized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "playerAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        }
+      ],
+      "name": "PlayerNonceGenerated",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "asyncGameHubAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "entry",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint8",
+          "name": "playerNumber",
+          "type": "uint8"
+        }
+      ],
+      "name": "findMatch",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        }
+      ],
+      "name": "getPlayerNonce",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        }
+      ],
+      "name": "getPlayingHistory",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "id",
+              "type": "uint64"
+            },
+            {
+              "internalType": "address[]",
+              "name": "playerAddresses",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "entry",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "gameAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint40",
+              "name": "playingTimeLimit",
+              "type": "uint40"
+            },
+            {
+              "internalType": "uint8",
+              "name": "playerNumber",
+              "type": "uint8"
+            },
+            {
+              "internalType": "enum IAsyncGameHub.MatchPhase",
+              "name": "phase",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "playerSubmissions",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "logicVersion",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "bestPlayer",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct IAsyncGameHub.BriefMatchData[]",
+          "name": "matchData",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        }
+      ],
+      "name": "getPlayingMatchInfoOf",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address[]",
+          "name": "playerAddresses",
+          "type": "address[]"
+        },
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "bestPlayer",
+          "type": "address"
+        },
+        {
+          "internalType": "uint40",
+          "name": "playingTimeLimit",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint8",
+          "name": "playerNumber",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "initialize",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "gameHubAddress",
+          "type": "address"
+        }
+      ],
+      "name": "updateAsyncGameHubAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "factoryDeps": {}
+}

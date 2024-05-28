@@ -1,0 +1,1104 @@
+{
+  "_format": "hh-zksolc-artifact-1",
+  "contractName": "ITournamentGameHub",
+  "sourceName": "contracts/submodule/tournament-game-hub/contracts/interfaces/ITournamentGameHub.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "AlreadyHavingATicket",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ConflictedPercentage",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidAlpha",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidParams",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidSignature",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "LatestPotOfAlphaIsNotOpening",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "LatestPotOfAlphaIsOpening",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NoRegisteredModerator",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NoTicket",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PotAlreadyClosed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PotCreationLocked",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PotEnded",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PotNotEnded",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Unauthorized",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "newValue",
+          "type": "uint8"
+        }
+      ],
+      "name": "AlphaFeePercentageUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAddress",
+          "type": "address"
+        }
+      ],
+      "name": "AlphaKeysFactoryUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newValue",
+          "type": "uint256"
+        }
+      ],
+      "name": "DefaultBalanceRequirementUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAddress",
+          "type": "address"
+        }
+      ],
+      "name": "GameLibraryUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "registeredModeratorNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "ModeratorsRegistration",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "unregisteredModeratorNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "ModeratorsUnregistration",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint16",
+          "name": "rewardConfigId",
+          "type": "uint16"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "rewardLimit",
+          "type": "uint256"
+        }
+      ],
+      "name": "NewRewardConfig",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "totalReward",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "remainValue",
+          "type": "uint256"
+        }
+      ],
+      "name": "PotClosure",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "creator",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "alpha",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "feePercentage",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint40",
+          "name": "initialDuration",
+          "type": "uint40"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "intitialValue",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "balanceRequirement",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "rewardConfigId",
+          "type": "uint32"
+        }
+      ],
+      "name": "PotCreation",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "PotCreationLock",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "PotCreationUnlock",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "potNumber",
+          "type": "uint64"
+        }
+      ],
+      "name": "PotNumberIncrement",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "raiser",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "PotRaise",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "alpha",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256",
+          "name": "score",
+          "type": "int256"
+        }
+      ],
+      "name": "ScoreSubmission",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        }
+      ],
+      "name": "TicketBuy",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAddress",
+          "type": "address"
+        }
+      ],
+      "name": "TokenUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAddress",
+          "type": "address"
+        }
+      ],
+      "name": "TreasuryUpdate",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "alphaFeePercentage",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "alphaFeePercentage",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "alphaKeysFactory",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "alphaKeysFactory",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_alpha",
+          "type": "address"
+        }
+      ],
+      "name": "alphaLatestPotIds",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_potId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "buyTicket",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_potId",
+          "type": "uint64"
+        }
+      ],
+      "name": "closePot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_alpha",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_gameAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_feePercentage",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint40",
+          "name": "_initialDuration",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint40",
+          "name": "_additionalDuration",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_initialValue",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_balanceRequirement",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "_rewardConfigId",
+          "type": "uint16"
+        }
+      ],
+      "name": "createPot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_creator",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_alpha",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_gameAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_feePercentage",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint40",
+          "name": "_initialDuration",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint40",
+          "name": "_additionalDuration",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_initialValue",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_balanceRequirement",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "_rewardConfigId",
+          "type": "uint16"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "createPotWithSignature",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "defaultBalanceRequirement",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "defaultBalanceRequirement",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "gameLibrary",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "gameLibrary",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_gameAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getGameData",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "defaultTicketPrice",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint40",
+              "name": "defaultAdditionalDuration",
+              "type": "uint40"
+            },
+            {
+              "internalType": "uint8",
+              "name": "defaultFeePercentage",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct IGameLibrary.GameData",
+          "name": "gameData",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_alpha",
+          "type": "address"
+        }
+      ],
+      "name": "getLatestPotGameOfAlpha",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_alpha",
+          "type": "address"
+        }
+      ],
+      "name": "getLatestPotInfoOfAlpha",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "balanceRequirement",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "alpha",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "creator",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "moderator",
+          "type": "address"
+        },
+        {
+          "internalType": "uint48",
+          "name": "submissionCount",
+          "type": "uint48"
+        },
+        {
+          "internalType": "uint40",
+          "name": "endAt",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint40",
+          "name": "additionalDuration",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint16",
+          "name": "rewardConfigId",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint16",
+          "name": "topPlayerCount",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint8",
+          "name": "feePercentage",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "alphaFeePercentage",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bool",
+          "name": "isOpening",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getModerators",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "moderators",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_potId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        }
+      ],
+      "name": "getPlayerData",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "int256",
+              "name": "score",
+              "type": "int256"
+            },
+            {
+              "internalType": "uint48",
+              "name": "lastSubmission",
+              "type": "uint48"
+            },
+            {
+              "internalType": "uint32",
+              "name": "usedTickets",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bool",
+              "name": "hasTicket",
+              "type": "bool"
+            },
+            {
+              "internalType": "enum ITournamentGameHub.Tier",
+              "name": "tier",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct ITournamentGameHub.PlayerData",
+          "name": "playerData",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_potId",
+          "type": "uint64"
+        }
+      ],
+      "name": "getPotDistributions",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "totalReward",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "remainValue",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address[]",
+          "name": "topPlayers",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "rewards",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint16",
+          "name": "_rewardConfigId",
+          "type": "uint16"
+        }
+      ],
+      "name": "getRewardConfig",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "rewardPortions",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_alpha",
+          "type": "address"
+        }
+      ],
+      "name": "isLatestPotOfAlphaCloseable",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "closable",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_alpha",
+          "type": "address"
+        }
+      ],
+      "name": "isLatestPotOfAlphaEnded",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "ended",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_potId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        }
+      ],
+      "name": "isPlayerQualified",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "qualified",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "moderatorPivot",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "moderatorPivot",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "nonces",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "potCreationLock",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "potCreationLock",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "potNumber",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "potNumber",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_potId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "raisePot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardConfigNumber",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "rewardConfigNumber",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_potId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        },
+        {
+          "internalType": "int256",
+          "name": "_score",
+          "type": "int256"
+        }
+      ],
+      "name": "submitScore",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "treasury",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "treasury",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "version",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "factoryDeps": {}
+}

@@ -25,7 +25,8 @@ const config: HardhatUserConfig = {
             },
             treasuryAddress: process.env.TESTNET_TREASURY_ADDRESS,
             knifeHitAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
-            contractFactory: process.env.CONTRACT_FACTORY_NAME
+            contractFactory: process.env.CONTRACT_FACTORY_NAME,
+            asyncGameHubAddress: process.env.TESTNET_ASYNC_GAME_HUB_ADDRESS,
           } as any,
           localhost: {
             allowUnlimitedContractSize: true,
@@ -34,9 +35,15 @@ const config: HardhatUserConfig = {
               auto: true,
               interval: 5000,
             },
-            treasuryAddress: process.env.ARCADE_TREASURY_ADDRESS,
-            knifeHitAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
-            contractFactory: process.env.CONTRACT_FACTORY_NAME
+            ethNetwork: "https://testnet.runechain.com/rpc",
+            zksync: true, // Flag that targets zkSync Era.
+            deployerKey: process.env.TESTNET_DEPLOYER_PRIVATE_KEY,
+
+            treasuryAddress: process.env.TESTNET_TREASURY_ADDRESS,
+            mainAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
+            contractFactory: process.env.CONTRACT_FACTORY_NAME,
+            asyncGameHubAddress: process.env.TESTNET_ASYNC_GAME_HUB_ADDRESS,
+
           } as any,
           arcadeDev: {
             url: 'https://testnet.bitcoinarcade.xyz/rpc',
@@ -45,7 +52,8 @@ const config: HardhatUserConfig = {
             allowUnlimitedContractSize: true,
             treasuryAddress: process.env.ARCADE_TREASURY_ADDRESS,
             knifeHitAddress: process.env.ARCADE_DEV_DUCK_RACE_ADDRESS,
-            contractFactory: process.env.CONTRACT_FACTORY_NAME
+            contractFactory: process.env.CONTRACT_FACTORY_NAME,
+            asyncGameHubAddress: process.env.TESTNET_ASYNC_GAME_HUB_ADDRESS,
           } as any,
           testnet: {
             url: 'https://l2-node.regtest.trustless.computer/',
@@ -55,7 +63,8 @@ const config: HardhatUserConfig = {
             deployerKey: process.env.TESTNET_DEPLOYER_PRIVATE_KEY,
             treasuryAddress: process.env.TESTNET_TREASURY_ADDRESS,
             knifeHitAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
-            contractFactory: process.env.CONTRACT_FACTORY_NAME
+            contractFactory: process.env.CONTRACT_FACTORY_NAME,
+            asyncGameHubAddress: process.env.TESTNET_ASYNC_GAME_HUB_ADDRESS,
           } as any
           ,
           zkTestnet: {
@@ -69,7 +78,8 @@ const config: HardhatUserConfig = {
 
             treasuryAddress: process.env.TESTNET_TREASURY_ADDRESS,
             mainAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
-            contractFactory: process.env.CONTRACT_FACTORY_NAME
+            contractFactory: process.env.CONTRACT_FACTORY_NAME,
+            asyncGameHubAddress: process.env.TESTNET_ASYNC_GAME_HUB_ADDRESS,
             
         } as any
     },

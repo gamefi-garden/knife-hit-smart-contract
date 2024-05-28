@@ -1,0 +1,45 @@
+await knifeHit.findMatchV2(zeroAddress, 1, actions,{ value: 1});
+zeroAddress
+const zeroAddress = '0x0000000000000000000000000000000000000000';
+zeroAddress
+actions = [107520,992,2256896,2232,35680,37900304]
+knifeHit = KnifeHit.attach('0x884b36F200158704fb2c16496D95ACb29AB70D2F')
+KnifeHit = await ethers.getContractFactory('AsyncKnifeHit')
+await knifeHit.findMatchV2(zeroAddress, 1, actions);
+zeroAddress
+const zeroAddress = '0x0000000000000000000000000000000000000000';
+zeroAddress = 0x0000000000000000000000000000000000000000
+actions = [107520, 992, 2256896, 2232, 35680, 37900304];
+zeroAddress = 0x0000000000000000000000000000000000000000
+zeroAddress = '0x0000000000000000000000000000000000000000';
+const zeroAddress = '0x0000000000000000000000000000000000000000';
+ await knifeHit.findMatchV2(0x0000000000000000000000000000000000000000, 1,actions  );
+ await knifeHit.findMatchV2(address(0), 1,actions);
+ await knifeHit.findMatchV2(1,actions);
+ await knifeHit.findMatchV2(, 1,actions);
+ await knifeHit.findMatchV2(0x0, 1,actions  );
+ await knifeHit.findMatchV2(0x0000000000000000000000000000000000000000, 1,actions  );
+receipt = await knifeHit.findMatchV2(’0x0000000000000000000000000000000000000000’, 1,actions  );
+receipt = await knifeHit.findMatchV2(0x0000000000000000000000000000000000000000, 1,actions  );
+await knifeHit.findMatchV2(’0x0000000000000000000000000000000000000000,’ 1,actions  );
+tokenAddress = '0x0000000000000000000000000000000000000000';
+const tokenAddress = '0x0000000000000000000000000000000000000000'; // Example address, replace if needed
+receipt = await knifeHit.findMatchV2(0x0000000000000000000000000000000000000000, 1,actions  );
+receipt = await knifeHit.findMatchV2(”0x0”, 1,actions  );
+receipt = await knifeHit.findMatchV2(null, 1,actions  );
+receipt = await knifeHit.findMatchV2(0x0, 1,actions  );
+actions = [107520,992,2256896,2232,35680,37900304]
+knifeHit = KnifeHit.attach('0x884b36F200158704fb2c16496D95ACb29AB70D2F')
+KnifeHit = await ethers.getContractFactory('AsyncKnifeHit')
+receipt = await knifeHit.findMatch(0x0, 1,[107520,992,2256896,2232,35680,37900304]  );
+ await knifeHit.findMatch(0x0, 1,actions  );
+actions = [107520,992,2256896,2232,35680,37900304]
+await knifeHit.findMatch(0x0, 1,actions  );
+await knifeHit.findMatch(”0x0’” 1,actions  );
+receipt = await knifeHit.findMatch(’0x0’, 1,actions  );
+receipt = await knifeHit.findMatch(null, 1,actions  );
+actions = [107520,992,2256896,2232,35680,37900304]
+knifeHit = KnifeHit.attach('0x77BF5928ec566F2C2Fd7f14Ac59A28202046BD26')
+KnifeHit = await ethers.getContractFactory('AsyncKnifeHit')
+Kn = kn.attach('0x77BF5928ec566F2C2Fd7f14Ac59A28202046BD26')
+kn = await ethers.getContractFactory('AsyncKnifeHit')

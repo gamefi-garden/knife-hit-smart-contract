@@ -1,0 +1,13 @@
+/.idea
+/artifacts
+/cache
+/node_modules
+/test-results
+/typechain-types
+/submodules
+
+.env
+contract_addresses.json
+addresses.json
+.generated
+*.csv

@@ -1,0 +1,1113 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0x2595d0b18989cCB319947C991B02D2416c9e6c88",
+    "txHash": "0xf4e3306849f36bf7046b53afb63cbfb919091373e527b7cf8545c0d4be70e5aa"
+  },
+  "proxies": [
+    {
+      "address": "0xcE8D8973Ee27a80Db8A4F5977c92dfCc27A05A37",
+      "txHash": "0xd3133176c68e1a58d159dba2a86bcaeb850ea09df148f56286cce407b0ea2dcb",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x90959542F09e5172011aA350E81cf2Ee4cAbB13D",
+      "txHash": "0x4205818efacb37eaaea5f2b31f8a62eeb45cd4975801fd44df960a57e0e2d1c7",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "d5650866109edf91fbc4c4f7f5d841961cd2ddaf4fb697b0d1778a20a526b99f": {
+      "address": "0x659994D9C04B3Ed674A4E352aEdf51A27bA2A6F2",
+      "txHash": "0xb12eb943434f38b0c92a5ef3365a03f47959cc12e482cf07b7c7099281a05464",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "games",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_address,t_struct(GameData)7036_storage)",
+            "contract": "GameLibraryStorage",
+            "src": "contracts/GameLibrary.sol:13"
+          },
+          {
+            "label": "registeredGames",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_struct(AddressSet)8067_storage",
+            "contract": "GameLibraryStorage",
+            "src": "contracts/GameLibrary.sol:14"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "GameLibraryStorage",
+            "src": "contracts/GameLibrary.sol:16"
+          },
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "53",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "54",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "105",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_struct(GameData)7036_storage)": {
+            "label": "mapping(address => struct IGameLibrary.GameData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint64)": {
+            "label": "mapping(address => uint64)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(AddressSet)8067_storage": {
+            "label": "struct Set.AddressSet",
+            "members": [
+              {
+                "label": "values",
+                "type": "t_array(t_address)dyn_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "positions",
+                "type": "t_mapping(t_address,t_uint64)",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(GameData)7036_storage": {
+            "label": "struct IGameLibrary.GameData",
+            "members": [
+              {
+                "label": "name",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "defaultTicketPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "defaultAdditionalDuration",
+                "type": "t_uint40",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "defaultFeePercentage",
+                "type": "t_uint8",
+                "offset": 5,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint40": {
+            "label": "uint40",
+            "numberOfBytes": "5"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "6af8c3286dc775f70cab1fe76417f9e561b6487060227423a1701ce2df1e61f8": {
+      "address": "0x0b0Fa180BB135E1df7Df65d1fc6e6E2196af356B",
+      "txHash": "0xa78a4e55e548802e785f7e05cb422be52a4cf574cb8c60bd6ad227613cbcc6fb",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "rewardConfigs",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint32,t_array(t_uint256)dyn_storage)",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:40"
+          },
+          {
+            "label": "alphaLatestPotIds",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_uint64)",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:41"
+          },
+          {
+            "label": "nonces",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:42"
+          },
+          {
+            "label": "pots",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_uint64,t_struct(PotData)3003_storage)",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:43"
+          },
+          {
+            "label": "potSecondaryPlayers",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_uint64,t_struct(AddressHeap)5903_storage)",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:44"
+          },
+          {
+            "label": "defaultBalanceRequirement",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:46"
+          },
+          {
+            "label": "token",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_address",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:47"
+          },
+          {
+            "label": "treasury",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_address",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:48"
+          },
+          {
+            "label": "gameLibrary",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_address",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:49"
+          },
+          {
+            "label": "alphaKeysFactory",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_address",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:50"
+          },
+          {
+            "label": "potNumber",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_uint64",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:51"
+          },
+          {
+            "label": "rewardConfigNumber",
+            "offset": 28,
+            "slot": "9",
+            "type": "t_uint32",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:52"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:54"
+          },
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "60",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "60",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "61",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "111",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "112",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "161",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "162",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "211",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "212",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(Tier)5547": {
+            "label": "enum ITournamentGameHub.Tier",
+            "members": [
+              "NON_CANDIDATE",
+              "TOP_TIER",
+              "SECONDARY_TIER"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_int256": {
+            "label": "int256",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_address)": {
+            "label": "mapping(address => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_struct(PlayerData)5559_storage)": {
+            "label": "mapping(address => struct ITournamentGameHub.PlayerData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint64)": {
+            "label": "mapping(address => uint64)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint32,t_array(t_uint256)dyn_storage)": {
+            "label": "mapping(uint32 => uint256[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_struct(AddressHeap)5903_storage)": {
+            "label": "mapping(uint64 => struct Heap.AddressHeap)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_struct(PotData)3003_storage)": {
+            "label": "mapping(uint64 => struct TournamentGameHubStorage.PotData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(AddressHeap)5903_storage": {
+            "label": "struct Heap.AddressHeap",
+            "members": [
+              {
+                "label": "values",
+                "type": "t_mapping(t_uint256,t_address)",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "positions",
+                "type": "t_mapping(t_address,t_uint256)",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "comparator",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "size",
+                "type": "t_uint32",
+                "offset": 20,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_struct(PlayerData)5559_storage": {
+            "label": "struct ITournamentGameHub.PlayerData",
+            "members": [
+              {
+                "label": "score",
+                "type": "t_int256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lastSubmission",
+                "type": "t_uint48",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "usedTickets",
+                "type": "t_uint32",
+                "offset": 6,
+                "slot": "1"
+              },
+              {
+                "label": "hasTicket",
+                "type": "t_bool",
+                "offset": 10,
+                "slot": "1"
+              },
+              {
+                "label": "tier",
+                "type": "t_enum(Tier)5547",
+                "offset": 11,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(PotData)3003_storage": {
+            "label": "struct TournamentGameHubStorage.PotData",
+            "members": [
+              {
+                "label": "players",
+                "type": "t_mapping(t_address,t_struct(PlayerData)5559_storage)",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "topPlayers",
+                "type": "t_mapping(t_address,t_address)",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "alpha",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "endAt",
+                "type": "t_uint40",
+                "offset": 20,
+                "slot": "2"
+              },
+              {
+                "label": "additionalDuration",
+                "type": "t_uint40",
+                "offset": 25,
+                "slot": "2"
+              },
+              {
+                "label": "topPlayerCount",
+                "type": "t_uint16",
+                "offset": 30,
+                "slot": "2"
+              },
+              {
+                "label": "gameAddress",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "submissionCount",
+                "type": "t_uint48",
+                "offset": 20,
+                "slot": "3"
+              },
+              {
+                "label": "rewardConfigId",
+                "type": "t_uint32",
+                "offset": 26,
+                "slot": "3"
+              },
+              {
+                "label": "feePercentage",
+                "type": "t_uint8",
+                "offset": 30,
+                "slot": "3"
+              },
+              {
+                "label": "isOpening",
+                "type": "t_bool",
+                "offset": 31,
+                "slot": "3"
+              },
+              {
+                "label": "value",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "ticketPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "balanceRequirement",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "topPlayersHead",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "7"
+              },
+              {
+                "label": "creator",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "8"
+              }
+            ],
+            "numberOfBytes": "288"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_uint40": {
+            "label": "uint40",
+            "numberOfBytes": "5"
+          },
+          "t_uint48": {
+            "label": "uint48",
+            "numberOfBytes": "6"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "d06362e685f53fa6c10921811931111faab3b41cfc83cda2a7dec3a5a516b434": {
+      "address": "0x939c9aea08e12e41E201516F0627854C4c127399",
+      "txHash": "0xf4c04aa87f46bd422c3dd547650343091c9ddfb6afb40cea6738341c667eb751",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "rewardConfigs",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint32,t_array(t_uint256)dyn_storage)",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:41"
+          },
+          {
+            "label": "alphaLatestPotIds",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_uint64)",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:42"
+          },
+          {
+            "label": "nonces",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:43"
+          },
+          {
+            "label": "pots",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_uint64,t_struct(PotData)3005_storage)",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:44"
+          },
+          {
+            "label": "potSecondaryPlayers",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_uint64,t_struct(AddressHeap)5825_storage)",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:45"
+          },
+          {
+            "label": "defaultBalanceRequirement",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:47"
+          },
+          {
+            "label": "token",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_address",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:48"
+          },
+          {
+            "label": "treasury",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_address",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:49"
+          },
+          {
+            "label": "gameLibrary",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_address",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:50"
+          },
+          {
+            "label": "alphaKeysFactory",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_address",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:51"
+          },
+          {
+            "label": "potNumber",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_uint64",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:52"
+          },
+          {
+            "label": "rewardConfigNumber",
+            "offset": 28,
+            "slot": "9",
+            "type": "t_uint32",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:53"
+          },
+          {
+            "label": "alphaFeePercentage",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_uint8",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:54"
+          },
+          {
+            "label": "potCreationLock",
+            "offset": 1,
+            "slot": "10",
+            "type": "t_bool",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:55"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "TournamentGameHubStorage",
+            "src": "contracts/TournamentGameHub.sol:57"
+          },
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "60",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "60",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "61",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "111",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "112",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "161",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "162",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "211",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "212",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(Tier)5447": {
+            "label": "enum ITournamentGameHub.Tier",
+            "members": [
+              "NON_CANDIDATE",
+              "TOP_TIER",
+              "SECONDARY_TIER"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_int256": {
+            "label": "int256",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_address)": {
+            "label": "mapping(address => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_struct(PlayerData)5459_storage)": {
+            "label": "mapping(address => struct ITournamentGameHub.PlayerData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint64)": {
+            "label": "mapping(address => uint64)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint32,t_array(t_uint256)dyn_storage)": {
+            "label": "mapping(uint32 => uint256[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_struct(AddressHeap)5825_storage)": {
+            "label": "mapping(uint64 => struct Heap.AddressHeap)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_struct(PotData)3005_storage)": {
+            "label": "mapping(uint64 => struct TournamentGameHubStorage.PotData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(AddressHeap)5825_storage": {
+            "label": "struct Heap.AddressHeap",
+            "members": [
+              {
+                "label": "values",
+                "type": "t_mapping(t_uint256,t_address)",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "positions",
+                "type": "t_mapping(t_address,t_uint256)",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "comparator",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "size",
+                "type": "t_uint32",
+                "offset": 20,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_struct(PlayerData)5459_storage": {
+            "label": "struct ITournamentGameHub.PlayerData",
+            "members": [
+              {
+                "label": "score",
+                "type": "t_int256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "lastSubmission",
+                "type": "t_uint48",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "usedTickets",
+                "type": "t_uint32",
+                "offset": 6,
+                "slot": "1"
+              },
+              {
+                "label": "hasTicket",
+                "type": "t_bool",
+                "offset": 10,
+                "slot": "1"
+              },
+              {
+                "label": "tier",
+                "type": "t_enum(Tier)5447",
+                "offset": 11,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(PotData)3005_storage": {
+            "label": "struct TournamentGameHubStorage.PotData",
+            "members": [
+              {
+                "label": "players",
+                "type": "t_mapping(t_address,t_struct(PlayerData)5459_storage)",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "topPlayers",
+                "type": "t_mapping(t_address,t_address)",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "alpha",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "endAt",
+                "type": "t_uint40",
+                "offset": 20,
+                "slot": "2"
+              },
+              {
+                "label": "additionalDuration",
+                "type": "t_uint40",
+                "offset": 25,
+                "slot": "2"
+              },
+              {
+                "label": "topPlayerCount",
+                "type": "t_uint16",
+                "offset": 30,
+                "slot": "2"
+              },
+              {
+                "label": "gameAddress",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "submissionCount",
+                "type": "t_uint48",
+                "offset": 20,
+                "slot": "3"
+              },
+              {
+                "label": "rewardConfigId",
+                "type": "t_uint32",
+                "offset": 26,
+                "slot": "3"
+              },
+              {
+                "label": "feePercentage",
+                "type": "t_uint8",
+                "offset": 30,
+                "slot": "3"
+              },
+              {
+                "label": "isOpening",
+                "type": "t_bool",
+                "offset": 31,
+                "slot": "3"
+              },
+              {
+                "label": "value",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "ticketPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "balanceRequirement",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "topPlayersHead",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "7"
+              },
+              {
+                "label": "creator",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "8"
+              },
+              {
+                "label": "alphaFeePercentage",
+                "type": "t_uint8",
+                "offset": 20,
+                "slot": "8"
+              }
+            ],
+            "numberOfBytes": "288"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_uint40": {
+            "label": "uint40",
+            "numberOfBytes": "5"
+          },
+          "t_uint48": {
+            "label": "uint48",
+            "numberOfBytes": "6"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  }
+}

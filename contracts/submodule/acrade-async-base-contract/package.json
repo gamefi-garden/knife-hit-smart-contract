@@ -1,0 +1,29 @@
+{
+  "name": "gamefi-gamehub-smart-contract",
+  "scripts": {
+    "console:local": "npx hardhat --network localhost console",
+    "deployGameLibrary:local": "npx hardhat --network localhost run scripts/deployGameLibrary.ts",
+    "deployAsyncGameHub:local": "npx hardhat --network localhost run scripts/deployAsyncGameHub.ts",
+    "console:testnet": "npx hardhat --network testnet console",
+    "deployGameLibrary:testnet": "npx hardhat --network testnet run scripts/deployGameLibrary.ts",
+    "deployAsyncGameHub:testnet": "npx hardhat --network testnet run scripts/deployAsyncGameHub.ts",
+    "verify:testnet": "npx hardhat --network testnet run scripts/verify.ts",
+    "console:mainnet": "npx hardhat --network mainnet console",
+    "deployGameLibrary:mainnet": "npx hardhat --network mainnet run scripts/deployGameLibrary.ts",
+    "deployAsyncGameHub:mainnet": "npx hardhat --network mainnet run scripts/deployAsyncGameHub.ts",
+    "verify:mainnet": "npx hardhat --network mainnet run scripts/verify.ts"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "@nomiclabs/hardhat-solhint": "^3.0.1",
+    "@openzeppelin/contracts-upgradeable": "4.9.3",
+    "@openzeppelin/hardhat-upgrades": "^1.28.0",
+    "@types/random-seed": "^0.3.3",
+    "dotenv": "^16.1.4",
+    "hardhat-contract-sizer": "^2.10.0",
+    "mocha-junit-reporter": "^2.2.0",
+    "mocha-multi-reporters": "^1.5.1",
+    "random-seed": "^0.3.0"
+  }
+}

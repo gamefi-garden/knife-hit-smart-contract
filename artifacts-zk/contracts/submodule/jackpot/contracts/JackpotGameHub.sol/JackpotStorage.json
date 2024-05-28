@@ -1,0 +1,1289 @@
+{
+  "_format": "hh-zksolc-artifact-1",
+  "contractName": "JackpotStorage",
+  "sourceName": "contracts/submodule/jackpot/contracts/JackpotGameHub.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "AlreadyHavingATicket",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        }
+      ],
+      "name": "ConflictPercentages",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "GameAlreadyRegistered",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidAlpha",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidParams",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidSignature",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NoPotIsOpening",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NoRegisteredGame",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NoTicket",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PotAlreadyClosed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PotEnded",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PotIsOpening",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PotNotEnded",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Unauthorized",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "UnregisteredGame",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAddress",
+          "type": "address"
+        }
+      ],
+      "name": "AlphaFactoryUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint40",
+          "name": "newValue",
+          "type": "uint40"
+        }
+      ],
+      "name": "GameAdditionalDurationUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newValue",
+          "type": "uint256"
+        }
+      ],
+      "name": "GameDefaultTicketPriceUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "newValue",
+          "type": "uint8"
+        }
+      ],
+      "name": "GameFeePercentageUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "newValue",
+          "type": "string"
+        }
+      ],
+      "name": "GameNameUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "defaultTicketPrice",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "feePercentage",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint40",
+          "name": "additionDuration",
+          "type": "uint40"
+        }
+      ],
+      "name": "GameRegistration",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddres",
+          "type": "address"
+        }
+      ],
+      "name": "GameRemoval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Migration",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint16",
+          "name": "rewardConfigId",
+          "type": "uint16"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "rewardLimit",
+          "type": "uint256"
+        }
+      ],
+      "name": "NewRewardConfig",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAddress",
+          "type": "address"
+        }
+      ],
+      "name": "OperationFundUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "newValue",
+          "type": "uint8"
+        }
+      ],
+      "name": "OperationFundingPercentageUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "totalReward",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "remainValue",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "rewardedAlphaNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "PotClosure",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint40",
+          "name": "initialDuration",
+          "type": "uint40"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "qualificationThreshold",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint16",
+          "name": "rewardConfigId",
+          "type": "uint16"
+        }
+      ],
+      "name": "PotCreation",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "newValue",
+          "type": "uint64"
+        }
+      ],
+      "name": "PotNumberUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "raiser",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "PotRaise",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "newValue",
+          "type": "uint8"
+        }
+      ],
+      "name": "ReservePercentageUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "alpha",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256",
+          "name": "score",
+          "type": "int256"
+        }
+      ],
+      "name": "ScoreSubmission",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        }
+      ],
+      "name": "TicketBuy",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAddress",
+          "type": "address"
+        }
+      ],
+      "name": "TreasuryUpdate",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "alphaFactory",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "alphaQualificationThreshold",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "buyTicket",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "closePot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint40",
+          "name": "_initialDuration",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_initialValue",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_qualificationThreshold",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "_rewardConfigId",
+          "type": "uint16"
+        }
+      ],
+      "name": "createPotOfRandomGame",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_gameAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint40",
+          "name": "_initialDuration",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_initialValue",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_qualificationThreshold",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "_rewardConfigId",
+          "type": "uint16"
+        }
+      ],
+      "name": "createPotOfSpecificGame",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "games",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "defaultTicketPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint40",
+          "name": "additionalDuration",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint8",
+          "name": "feePercentage",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_gameAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getGamePots",
+      "outputs": [
+        {
+          "internalType": "uint64[]",
+          "name": "pots",
+          "type": "uint64[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLatestPotGame",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "game",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLatestPotInfo",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "potId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "qualificationThreshold",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "game",
+          "type": "address"
+        },
+        {
+          "internalType": "uint40",
+          "name": "endAt",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint40",
+          "name": "additionalDuration",
+          "type": "uint40"
+        },
+        {
+          "internalType": "bool",
+          "name": "isOpening",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint8",
+          "name": "feePercentage",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "operationFundingPercentage",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "reservePercentage",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint16",
+          "name": "rewardConfigId",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint32",
+          "name": "submissionCount",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "topAlphaCount",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        }
+      ],
+      "name": "getPlayer",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "ticket",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "nonce",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_potId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "_alpha",
+          "type": "address"
+        }
+      ],
+      "name": "getPotAlpha",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "score",
+          "type": "int256"
+        },
+        {
+          "internalType": "uint32",
+          "name": "lastSubmission",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "totalSubmission",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_potId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "_alpha",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        }
+      ],
+      "name": "getPotAlphaPlayerSubmission",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_potId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "_alpha",
+          "type": "address"
+        }
+      ],
+      "name": "getPotAlphaPlayers",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_potId",
+          "type": "uint64"
+        }
+      ],
+      "name": "getPotDistributions",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "totalReward",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "remainValue",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address[]",
+          "name": "rewardedAlphas",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "alphaRewards",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "address[][]",
+          "name": "alphaPlayers",
+          "type": "address[][]"
+        },
+        {
+          "internalType": "uint256[][]",
+          "name": "alphaPlayerRewards",
+          "type": "uint256[][]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getRegisteredGames",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "games",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint16",
+          "name": "rewardConfigId",
+          "type": "uint16"
+        }
+      ],
+      "name": "getRewardConfig",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        }
+      ],
+      "name": "hasTicket",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isLatestPotEnded",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "ended",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_potId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_alpha",
+          "type": "address"
+        }
+      ],
+      "name": "isPlayerQualified",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "qualified",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "operationFund",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "operationFundingPercentage",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "players",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "ticket",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "nonce",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "potNumber",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "name": "pots",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "qualificationThreshold",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "topAlphasHead",
+          "type": "address"
+        },
+        {
+          "internalType": "uint40",
+          "name": "additionalDuration",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint32",
+          "name": "topAlphaCount",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint8",
+          "name": "feePercentage",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "operationFundingPercentage",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "reservePercentage",
+          "type": "uint8"
+        },
+        {
+          "internalType": "address",
+          "name": "game",
+          "type": "address"
+        },
+        {
+          "internalType": "uint40",
+          "name": "endAt",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint32",
+          "name": "submissionCount",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint16",
+          "name": "rewardConfigId",
+          "type": "uint16"
+        },
+        {
+          "internalType": "bool",
+          "name": "isOpening",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "raisePot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "reservePercentage",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "reservePot",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardConfigNumber",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "rewardConfigs",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_alpha",
+          "type": "address"
+        },
+        {
+          "internalType": "int256",
+          "name": "_score",
+          "type": "int256"
+        }
+      ],
+      "name": "submitScore",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "treasury",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "version",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "factoryDeps": {}
+}

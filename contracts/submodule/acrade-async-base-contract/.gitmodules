@@ -1,0 +1,3 @@
+[submodule "submodules/gamefi-gamehub-smart-contract"]
+	path = submodules/gamefi-gamehub-smart-contract
+	url = git@github.com:TrustlessComputer/gamefi-gamehub-smart-contract.git

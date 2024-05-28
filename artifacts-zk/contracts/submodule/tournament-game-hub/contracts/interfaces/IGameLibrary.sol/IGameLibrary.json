@@ -1,0 +1,251 @@
+{
+  "_format": "hh-zksolc-artifact-1",
+  "contractName": "IGameLibrary",
+  "sourceName": "contracts/submodule/tournament-game-hub/contracts/interfaces/IGameLibrary.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "GameAlreadyRegistered",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidParams",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NoRegisteredGame",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "UnregisteredGame",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint40",
+          "name": "newValue",
+          "type": "uint40"
+        }
+      ],
+      "name": "GameDefaultAdditionalDurationUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "newValue",
+          "type": "uint8"
+        }
+      ],
+      "name": "GameDefaultFeePercentageUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newValue",
+          "type": "uint256"
+        }
+      ],
+      "name": "GameDefaultTicketPriceUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "newValue",
+          "type": "string"
+        }
+      ],
+      "name": "GameNameUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "defaultTicketPrice",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint40",
+          "name": "defaultAdditionalDuration",
+          "type": "uint40"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "defaultFeePercentage",
+          "type": "uint8"
+        }
+      ],
+      "name": "GameRegistration",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        }
+      ],
+      "name": "GameRemoval",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_gameAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getGame",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "defaultTicketPrice",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint40",
+              "name": "defaultAdditionalDuration",
+              "type": "uint40"
+            },
+            {
+              "internalType": "uint8",
+              "name": "defaultFeePercentage",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct IGameLibrary.GameData",
+          "name": "game",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getGameNumber",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "gameNumber",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getRandomGameAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "gameAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getRegisteredGames",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "registeredGames",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "version",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "factoryDeps": {}
+}

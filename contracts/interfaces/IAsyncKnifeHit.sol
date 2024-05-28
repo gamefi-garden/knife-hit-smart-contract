@@ -2,6 +2,7 @@
 pragma solidity ^0.8.19;
 
 import {KnifeHitLogic} from "../libraries/KnifeHitLogic.sol";
+import {IAsyncGameHub} from "../submodule/acrade-async-base-contract/contracts/IAsyncGameHub.sol";
 
    
 
@@ -41,33 +42,14 @@ interface IAsyncKnifeHit {
     error InsufficientFunds();
     error FailedTransfer();
 
-
-
     function version() external pure returns (string memory version);
-
-    function getPlayingMatchesOf(address _player) external view returns (uint64[] memory);
-    function getEndMatchesOf(address _player) external view returns (uint64[] memory);
-
-    function getPlayingMatchDataOf(address _player) external view returns (
-        KnifeHitMatchData[] memory knifeHitMatches);
-
-    function getEndMatchDataOf(address _player) external view returns (
-        KnifeHitMatchData[] memory knifeHitMatches);
-
-
-    function getMatch(uint64 matchId) external view returns (
-        KnifeHitMatchData memory KnifeHitMatchData);
-
-    function getMatches(uint64[] memory matchIds) external view returns (
-        KnifeHitMatchData[] memory knifeHitMatches);
-
-  
 
     function getGameConfig() external view returns (
     KnifeHitLogic.KnifeHitGameConfig memory config);
 
-
-    function findMatch(
+ 
+    
+    function findMatchV2(
         address _token,
         uint256 _entry,
         uint32[] memory _actions

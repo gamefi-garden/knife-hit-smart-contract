@@ -1,0 +1,37 @@
+{
+  "name": "jackpot-game-hub-smart-contract",
+  "scripts": {
+    "generateAccounts": "npx hardhat run scripts/generateAccounts.ts",
+    "console:local": "npx hardhat --network localhost console",
+    "deployGameLibrary:local": "npx hardhat --network localhost run scripts/deployGameLibrary.ts",
+    "deployTournamentGameHub:local": "npx hardhat --network localhost run scripts/deployTournamentGameHub.ts",
+    "createPot:local": "npx hardhat --network localhost run scripts/createPotWithSignature.ts",
+    "console:testnet": "npx hardhat --network testnet console",
+    "deployGameLibrary:testnet": "npx hardhat --network testnet run scripts/deployGameLibrary.ts",
+    "deployTournamentGameHub:testnet": "npx hardhat --network testnet run scripts/deployTournamentGameHub.ts",
+    "verifyGameLibrary:testnet": "npx hardhat --network testnet run scripts/verifyGameLibrary.ts",
+    "verifyTournamentGameHub:testnet": "npx hardhat --network testnet run scripts/verifyTournamentGameHub.ts",
+    "createPot:testnet": "npx hardhat --network testnet run scripts/createPotWithSignature.ts",
+    "queryEvents:testnet": "npx hardhat --network testnet run scripts/queryEvents.ts",
+    "console:mainnet": "npx hardhat --network mainnet console",
+    "deployGameLibrary:mainnet": "npx hardhat --network mainnet run scripts/deployGameLibrary.ts",
+    "deployTournamentGameHub:mainnet": "npx hardhat --network mainnet run scripts/deployTournamentGameHub.ts",
+    "verifyGameLibrary:mainnet": "npx hardhat --network mainnet run scripts/verifyGameLibrary.ts",
+    "verifyTournamentGameHub:mainnet": "npx hardhat --network mainnet run scripts/verifyTournamentGameHub.ts",
+    "createPot:mainnet": "npx hardhat --network mainnet run scripts/createPotWithSignature.ts",
+    "queryEvents:mainnet": "npx hardhat --network mainnet run scripts/queryEvents.ts"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "@nomiclabs/hardhat-solhint": "^3.0.1",
+    "@openzeppelin/contracts-upgradeable": "4.9.3",
+    "@openzeppelin/hardhat-upgrades": "^1.28.0",
+    "@types/random-seed": "^0.3.3",
+    "dotenv": "^16.1.4",
+    "hardhat-contract-sizer": "^2.10.0",
+    "mocha-junit-reporter": "^2.2.0",
+    "mocha-multi-reporters": "^1.5.1",
+    "random-seed": "^0.3.0"
+  }
+}
