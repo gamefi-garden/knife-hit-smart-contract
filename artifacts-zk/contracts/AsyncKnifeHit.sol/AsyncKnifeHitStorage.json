@@ -1,0 +1,600 @@
+{
+  "_format": "hh-zksolc-artifact-1",
+  "contractName": "AsyncKnifeHitStorage",
+  "sourceName": "contracts/AsyncKnifeHit.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "FailedTransfer",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InsufficientFunds",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidActionNumber",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidMatchAborting",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Unauthorized",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "Initialize",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        }
+      ],
+      "name": "KnifeFindMatch",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        }
+      ],
+      "name": "KnifeHitMatchAbortion",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "creator",
+          "type": "address"
+        }
+      ],
+      "name": "KnifeHitMatchCreation",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "winner",
+          "type": "address"
+        }
+      ],
+      "name": "KnifeHitMatchFulfillment",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "feePercentage",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_entry",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint32[]",
+          "name": "_actions",
+          "type": "uint32[]"
+        }
+      ],
+      "name": "findMatch",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "gameConfig",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "gameDuration",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "ratio",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        }
+      ],
+      "name": "getEndMatchDataOf",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "matchId",
+              "type": "uint64"
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "entry",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "winer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint8",
+              "name": "logicVersion",
+              "type": "uint8"
+            },
+            {
+              "internalType": "enum IAsyncKnifeHit.GamePhase",
+              "name": "gamePhase",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address[2]",
+              "name": "playerAddresses",
+              "type": "address[2]"
+            },
+            {
+              "internalType": "uint32[]",
+              "name": "player1Actions",
+              "type": "uint32[]"
+            },
+            {
+              "internalType": "uint32[]",
+              "name": "player2Actions",
+              "type": "uint32[]"
+            },
+            {
+              "internalType": "uint32[2]",
+              "name": "playerScore",
+              "type": "uint32[2]"
+            }
+          ],
+          "internalType": "struct IAsyncKnifeHit.KnifeHitMatchData[]",
+          "name": "knifeHitMatches",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        }
+      ],
+      "name": "getEndMatchesOf",
+      "outputs": [
+        {
+          "internalType": "uint64[]",
+          "name": "",
+          "type": "uint64[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getGameConfig",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint32",
+              "name": "gameDuration",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "ratio",
+              "type": "uint32"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "uint256",
+                  "name": "easeType",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint32",
+                  "name": "rotateSpeed",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "uint32",
+                  "name": "knifeCount",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "uint32",
+                  "name": "obstacle",
+                  "type": "uint32"
+                }
+              ],
+              "internalType": "struct KnifeHitLogic.KnifeHitLevelConfig[10]",
+              "name": "configs",
+              "type": "tuple[10]"
+            }
+          ],
+          "internalType": "struct KnifeHitLogic.KnifeHitGameConfig",
+          "name": "config",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "matchId",
+          "type": "uint64"
+        }
+      ],
+      "name": "getMatch",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "matchId",
+              "type": "uint64"
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "entry",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "winer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint8",
+              "name": "logicVersion",
+              "type": "uint8"
+            },
+            {
+              "internalType": "enum IAsyncKnifeHit.GamePhase",
+              "name": "gamePhase",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address[2]",
+              "name": "playerAddresses",
+              "type": "address[2]"
+            },
+            {
+              "internalType": "uint32[]",
+              "name": "player1Actions",
+              "type": "uint32[]"
+            },
+            {
+              "internalType": "uint32[]",
+              "name": "player2Actions",
+              "type": "uint32[]"
+            },
+            {
+              "internalType": "uint32[2]",
+              "name": "playerScore",
+              "type": "uint32[2]"
+            }
+          ],
+          "internalType": "struct IAsyncKnifeHit.KnifeHitMatchData",
+          "name": "KnifeHitMatchData",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64[]",
+          "name": "matchIds",
+          "type": "uint64[]"
+        }
+      ],
+      "name": "getMatches",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "matchId",
+              "type": "uint64"
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "entry",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "winer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint8",
+              "name": "logicVersion",
+              "type": "uint8"
+            },
+            {
+              "internalType": "enum IAsyncKnifeHit.GamePhase",
+              "name": "gamePhase",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address[2]",
+              "name": "playerAddresses",
+              "type": "address[2]"
+            },
+            {
+              "internalType": "uint32[]",
+              "name": "player1Actions",
+              "type": "uint32[]"
+            },
+            {
+              "internalType": "uint32[]",
+              "name": "player2Actions",
+              "type": "uint32[]"
+            },
+            {
+              "internalType": "uint32[2]",
+              "name": "playerScore",
+              "type": "uint32[2]"
+            }
+          ],
+          "internalType": "struct IAsyncKnifeHit.KnifeHitMatchData[]",
+          "name": "knifeHitMatches",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        }
+      ],
+      "name": "getPlayingMatchDataOf",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "matchId",
+              "type": "uint64"
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "entry",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "winer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint8",
+              "name": "logicVersion",
+              "type": "uint8"
+            },
+            {
+              "internalType": "enum IAsyncKnifeHit.GamePhase",
+              "name": "gamePhase",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address[2]",
+              "name": "playerAddresses",
+              "type": "address[2]"
+            },
+            {
+              "internalType": "uint32[]",
+              "name": "player1Actions",
+              "type": "uint32[]"
+            },
+            {
+              "internalType": "uint32[]",
+              "name": "player2Actions",
+              "type": "uint32[]"
+            },
+            {
+              "internalType": "uint32[2]",
+              "name": "playerScore",
+              "type": "uint32[2]"
+            }
+          ],
+          "internalType": "struct IAsyncKnifeHit.KnifeHitMatchData[]",
+          "name": "knifeHitMatches",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_player",
+          "type": "address"
+        }
+      ],
+      "name": "getPlayingMatchesOf",
+      "outputs": [
+        {
+          "internalType": "uint64[]",
+          "name": "",
+          "type": "uint64[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "matchNumber",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "treasury",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "version",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "factoryDeps": {}
+}

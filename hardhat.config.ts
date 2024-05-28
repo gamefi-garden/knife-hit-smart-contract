@@ -3,7 +3,13 @@ import 'dotenv/config';
 import '@nomicfoundation/hardhat-toolbox';
 import '@nomiclabs/hardhat-solhint';
 import '@openzeppelin/hardhat-upgrades';
-import 'hardhat-contract-sizer'
+import "@matterlabs/hardhat-zksync-solc";
+import "@matterlabs/hardhat-zksync-deploy";
+import "@matterlabs/hardhat-zksync-upgradable";
+
+// import './tasks/queryEvents';
+// import './tasks/queryEvents0';
+// import './tasks/queryEvents8';
 
 const config: HardhatUserConfig = {
     defaultNetwork: 'hardhat',
@@ -18,7 +24,7 @@ const config: HardhatUserConfig = {
               interval: 5000,
             },
             treasuryAddress: process.env.TESTNET_TREASURY_ADDRESS,
-            mainAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
+            knifeHitAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
             contractFactory: process.env.CONTRACT_FACTORY_NAME
           } as any,
           localhost: {
@@ -29,7 +35,7 @@ const config: HardhatUserConfig = {
               interval: 5000,
             },
             treasuryAddress: process.env.ARCADE_TREASURY_ADDRESS,
-            mainAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
+            knifeHitAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
             contractFactory: process.env.CONTRACT_FACTORY_NAME
           } as any,
           arcadeDev: {
@@ -38,7 +44,7 @@ const config: HardhatUserConfig = {
             chainId: 23508,
             allowUnlimitedContractSize: true,
             treasuryAddress: process.env.ARCADE_TREASURY_ADDRESS,
-            mainAddress: process.env.ARCADE_DEV_DUCK_RACE_ADDRESS,
+            knifeHitAddress: process.env.ARCADE_DEV_DUCK_RACE_ADDRESS,
             contractFactory: process.env.CONTRACT_FACTORY_NAME
           } as any,
           testnet: {
@@ -46,35 +52,50 @@ const config: HardhatUserConfig = {
             accounts: [process.env.TESTNET_DEPLOYER_PRIVATE_KEY],
             chainId: 42070,
             allowUnlimitedContractSize: true,
+            deployerKey: process.env.TESTNET_DEPLOYER_PRIVATE_KEY,
+            treasuryAddress: process.env.TESTNET_TREASURY_ADDRESS,
+            knifeHitAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
+            contractFactory: process.env.CONTRACT_FACTORY_NAME
+          } as any
+          ,
+          zkTestnet: {
+            url: 'https://rpc.zkbvml2-testnet.trustless.computer',
+            accounts: [process.env.TESTNET_DEPLOYER_PRIVATE_KEY],
+            chainId: 22102,
+            allowUnlimitedContractSize: true,
+            ethNetwork: "https://testnet.runechain.com/rpc", // The Ethereum Web3 RPC URL.
+            zksync: true, // Flag that targets zkSync Era.
+            deployerKey: process.env.TESTNET_DEPLOYER_PRIVATE_KEY,
+
             treasuryAddress: process.env.TESTNET_TREASURY_ADDRESS,
             mainAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
             contractFactory: process.env.CONTRACT_FACTORY_NAME
-          } as any,
+            
+        } as any
     },
-    etherscan: {
-        apiKey: {
-            testnet: '123',
-            mainnet: '123'
-        },
-        customChains: [
-            {
-                network: 'testnet',
-                chainId: 90452,
-                urls: {
-                    apiURL: 'https://testnet.bitcoinarcade.xyz/api',
-                    browserURL: 'https://testnet.bitcoinarcade.xyz/',
-                },
-            },
-            {
-                network: 'mainnet',
-                chainId: 42213,
-                urls: {
-                    apiURL: 'https://explorer.l2.trustless.computer/api',
-                    browserURL: 'https://explorer.l2.trustless.computer/',
-                },
-            },
-        ],
-    },
+    // etherscan: {
+    //     apiKey: {
+    //         tc: '123'
+    //     },
+    //     customChains: [
+    //         {
+    //             network: 'testnet',
+    //             chainId: 42069,
+    //             urls: {
+    //                 apiURL: 'https://explorer.nos-testnet.trustless.computer/api',
+    //                 browserURL: 'https://explorer.nos-testnet.trustless.computer/',
+    //             },
+    //         },
+    //         {
+    //             network: 'tc',
+    //             chainId: 42213,
+    //             urls: {
+    //                 apiURL: 'https://explorer.l2.trustless.computer/api',
+    //                 browserURL: 'https://explorer.l2.trustless.computer/',
+    //             },
+    //         },
+    //     ],
+    // },
     solidity: {
         compilers: [
             {
@@ -85,11 +106,6 @@ const config: HardhatUserConfig = {
                         runs: 200,
                     },
                     viaIR: true,
-                    // outputSelection: {
-                    //     "*": {
-                    //         "*": ["storageLayout"],
-                    //     },
-                    // },
                 },
             },
         ],
@@ -101,7 +117,7 @@ const config: HardhatUserConfig = {
         artifacts: './artifacts',
     },
     mocha: {
-        timeout: 2000000,
+        timeout: 20000,
         color: true,
         reporter: 'mocha-multi-reporters',
         reporterOptions: {

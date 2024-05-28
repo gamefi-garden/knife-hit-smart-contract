@@ -94,6 +94,31 @@
       "address": "0x916aCA8d3112b889b3DCa2AB0141ef22A567cDfc",
       "txHash": "0x27ad87d0c419da2acfdf40baedf353737807fae60a4bbc0cb7c94b58aac73bb2",
       "kind": "transparent"
+    },
+    {
+      "address": "0x9880503F5259D166D2493C1F49FBc0509f6Cd9c2",
+      "txHash": "0x5b941fd540eedb16e52c2318c18cb4fdfdb28dcf5b1295cc14df8d89336d29fa",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xc799c9bFfC23A7EdE4a5AA39f52A631E765f5c52",
+      "txHash": "0x296a48d7ebef3f13c18a64fb0a4fb6120c80238cbf85e85d8a597b487adaf8b1",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x84D8DF10385870C6032D0c31496f432fFADC424F",
+      "txHash": "0x8ee56805b178e70ae53c1855df3ce6fc3229b5b021dd6985ec633ddf7012b4b0",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xEB41519BBd8b71536dc5CC105bF8Ba067F042F69",
+      "txHash": "0x9a7658c24844addf5a6e4bdbed6e4b0dde9396258d58cdad007aa59519690659",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x82622Cca3C8CF6a72a8c2034050e48A3C6d47d9A",
+      "txHash": "0xf667d8e451808d57ee8d53f66320046a6e8da9bdf6361804cf3786fd41cd39af",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -6515,6 +6540,1398 @@
             "numberOfBytes": "896"
           },
           "t_struct(Uint64Set)2234_storage": {
+            "label": "struct Set.Uint64Set",
+            "members": [
+              {
+                "label": "values",
+                "type": "t_array(t_uint64)dyn_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "positions",
+                "type": "t_mapping(t_uint64,t_uint64)",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        },
+        "namespaces": {}
+      }
+    },
+    "c5c4cbe5a60036981d7b844e5ceb1839f8b73b232fb9bf956fb8b725002279a7": {
+      "address": "0xba59cB03843034d5D323758E5d9D1C11C81746ED",
+      "txHash": "0xed5b654336a48a2cfbd1fb141800e5c6cf92a4be47ae6a80fe9d6c2459a7bb12",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "matches",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint64,t_struct(KnifeHitMatchData)1664_storage)",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:17"
+          },
+          {
+            "label": "availableMatches",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_struct(Uint64Set)2236_storage",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:19"
+          },
+          {
+            "label": "playerPlayingMatches",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_struct(Uint64Set)2236_storage)",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:21"
+          },
+          {
+            "label": "playerEndedMatches",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_struct(Uint64Set)2236_storage)",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:22"
+          },
+          {
+            "label": "gameConfig",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_struct(KnifeHitGameConfig)1781_storage",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:24"
+          },
+          {
+            "label": "matchNumber",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_uint64",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:25"
+          },
+          {
+            "label": "_initialized",
+            "offset": 8,
+            "slot": "26",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 9,
+            "slot": "26",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "77",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "78",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "127",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "128",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "177",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "178",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)2_storage": {
+            "label": "address[2]",
+            "numberOfBytes": "64"
+          },
+          "t_array(t_struct(KnifeHitLevelConfig)1790_storage)10_storage": {
+            "label": "struct KnifeHitLogic.KnifeHitLevelConfig[10]",
+            "numberOfBytes": "640"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_array(t_uint32)dyn_storage": {
+            "label": "uint32[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint64)dyn_storage": {
+            "label": "uint64[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(GamePhase)1637": {
+            "label": "enum IAsyncKnifeHit.GamePhase",
+            "members": [
+              "None",
+              "Playing",
+              "End"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_struct(Uint64Set)2236_storage)": {
+            "label": "mapping(address => struct Set.Uint64Set)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_struct(KnifeHitMatchData)1664_storage)": {
+            "label": "mapping(uint64 => struct IAsyncKnifeHit.KnifeHitMatchData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_uint64)": {
+            "label": "mapping(uint64 => uint64)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(KnifeHitGameConfig)1781_storage": {
+            "label": "struct KnifeHitLogic.KnifeHitGameConfig",
+            "members": [
+              {
+                "label": "gameDuration",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "ratio",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "configs",
+                "type": "t_array(t_struct(KnifeHitLevelConfig)1790_storage)10_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "672"
+          },
+          "t_struct(KnifeHitLevelConfig)1790_storage": {
+            "label": "struct KnifeHitLogic.KnifeHitLevelConfig",
+            "members": [
+              {
+                "label": "easeType",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "rotateSpeed",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "knifeCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "1"
+              },
+              {
+                "label": "obstacle",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(KnifeHitMatchData)1664_storage": {
+            "label": "struct IAsyncKnifeHit.KnifeHitMatchData",
+            "members": [
+              {
+                "label": "matchId",
+                "type": "t_uint64",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "token",
+                "type": "t_address",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "entry",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "creator",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "logicVersion",
+                "type": "t_uint8",
+                "offset": 20,
+                "slot": "2"
+              },
+              {
+                "label": "gamePhase",
+                "type": "t_enum(GamePhase)1637",
+                "offset": 21,
+                "slot": "2"
+              },
+              {
+                "label": "playerAddresses",
+                "type": "t_array(t_address)2_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "player1Actions",
+                "type": "t_array(t_uint32)dyn_storage",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "player2Actions",
+                "type": "t_array(t_uint32)dyn_storage",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "config",
+                "type": "t_struct(KnifeHitGameConfig)1781_storage",
+                "offset": 0,
+                "slot": "7"
+              }
+            ],
+            "numberOfBytes": "896"
+          },
+          "t_struct(Uint64Set)2236_storage": {
+            "label": "struct Set.Uint64Set",
+            "members": [
+              {
+                "label": "values",
+                "type": "t_array(t_uint64)dyn_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "positions",
+                "type": "t_mapping(t_uint64,t_uint64)",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        },
+        "namespaces": {}
+      }
+    },
+    "9dd7f2460a660b5e52e55927bc99bdfb42f6960fe2ef332ca6b7fca7f8ff5a93": {
+      "address": "0x3D7dcf28516Be62263AA06c2358FF01F92Ab6BeE",
+      "txHash": "0xacdc12789deb0076147358b13c50af8ff5e686ddfa562b027854b84ec22b48b2",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "matches",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint64,t_struct(KnifeHitMatchData)1681_storage)",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:17"
+          },
+          {
+            "label": "availableMatches",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_struct(Uint64Set)2253_storage",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:19"
+          },
+          {
+            "label": "playerPlayingMatches",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_struct(Uint64Set)2253_storage)",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:21"
+          },
+          {
+            "label": "playerEndedMatches",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_struct(Uint64Set)2253_storage)",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:22"
+          },
+          {
+            "label": "gameConfig",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_struct(KnifeHitGameConfig)1798_storage",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:24"
+          },
+          {
+            "label": "matchNumber",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_uint64",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:25"
+          },
+          {
+            "label": "_initialized",
+            "offset": 8,
+            "slot": "26",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 9,
+            "slot": "26",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "77",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "78",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "127",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "128",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "177",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "178",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)2_storage": {
+            "label": "address[2]",
+            "numberOfBytes": "64"
+          },
+          "t_array(t_struct(KnifeHitLevelConfig)1807_storage)10_storage": {
+            "label": "struct KnifeHitLogic.KnifeHitLevelConfig[10]",
+            "numberOfBytes": "640"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_array(t_uint32)dyn_storage": {
+            "label": "uint32[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint64)dyn_storage": {
+            "label": "uint64[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(GamePhase)1652": {
+            "label": "enum IAsyncKnifeHit.GamePhase",
+            "members": [
+              "None",
+              "Playing",
+              "End"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_struct(Uint64Set)2253_storage)": {
+            "label": "mapping(address => struct Set.Uint64Set)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_struct(KnifeHitMatchData)1681_storage)": {
+            "label": "mapping(uint64 => struct IAsyncKnifeHit.KnifeHitMatchData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_uint64)": {
+            "label": "mapping(uint64 => uint64)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(KnifeHitGameConfig)1798_storage": {
+            "label": "struct KnifeHitLogic.KnifeHitGameConfig",
+            "members": [
+              {
+                "label": "gameDuration",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "ratio",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "configs",
+                "type": "t_array(t_struct(KnifeHitLevelConfig)1807_storage)10_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "672"
+          },
+          "t_struct(KnifeHitLevelConfig)1807_storage": {
+            "label": "struct KnifeHitLogic.KnifeHitLevelConfig",
+            "members": [
+              {
+                "label": "easeType",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "rotateSpeed",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "knifeCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "1"
+              },
+              {
+                "label": "obstacle",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(KnifeHitMatchData)1681_storage": {
+            "label": "struct IAsyncKnifeHit.KnifeHitMatchData",
+            "members": [
+              {
+                "label": "matchId",
+                "type": "t_uint64",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "token",
+                "type": "t_address",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "entry",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "creator",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "winer",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "logicVersion",
+                "type": "t_uint8",
+                "offset": 20,
+                "slot": "3"
+              },
+              {
+                "label": "gamePhase",
+                "type": "t_enum(GamePhase)1652",
+                "offset": 21,
+                "slot": "3"
+              },
+              {
+                "label": "playerAddresses",
+                "type": "t_array(t_address)2_storage",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "player1Actions",
+                "type": "t_array(t_uint32)dyn_storage",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "player2Actions",
+                "type": "t_array(t_uint32)dyn_storage",
+                "offset": 0,
+                "slot": "7"
+              },
+              {
+                "label": "config",
+                "type": "t_struct(KnifeHitGameConfig)1798_storage",
+                "offset": 0,
+                "slot": "8"
+              }
+            ],
+            "numberOfBytes": "928"
+          },
+          "t_struct(Uint64Set)2253_storage": {
+            "label": "struct Set.Uint64Set",
+            "members": [
+              {
+                "label": "values",
+                "type": "t_array(t_uint64)dyn_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "positions",
+                "type": "t_mapping(t_uint64,t_uint64)",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        },
+        "namespaces": {}
+      }
+    },
+    "4fdf825fae0638897f41914f735810b31c43af8cfaaf6d863c340d6a3505be4b": {
+      "address": "0x5401D842bE586b756a73669725378E0c47D53a33",
+      "txHash": "0x37276fd6aa6bc773b6537b384266ff0c9cd309cd80c23b5eb5db89881a1ed217",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "matches",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint64,t_struct(KnifeHitMatchData)1685_storage)",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:17"
+          },
+          {
+            "label": "availableMatches",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_struct(Uint64Set)2257_storage",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:19"
+          },
+          {
+            "label": "playerPlayingMatches",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_struct(Uint64Set)2257_storage)",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:21"
+          },
+          {
+            "label": "playerEndedMatches",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_struct(Uint64Set)2257_storage)",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:22"
+          },
+          {
+            "label": "gameConfig",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_struct(KnifeHitGameConfig)1802_storage",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:24"
+          },
+          {
+            "label": "matchNumber",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_uint64",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:25"
+          },
+          {
+            "label": "_initialized",
+            "offset": 8,
+            "slot": "26",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 9,
+            "slot": "26",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "77",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "78",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "127",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "128",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "177",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "178",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)2_storage": {
+            "label": "address[2]",
+            "numberOfBytes": "64"
+          },
+          "t_array(t_struct(KnifeHitLevelConfig)1811_storage)10_storage": {
+            "label": "struct KnifeHitLogic.KnifeHitLevelConfig[10]",
+            "numberOfBytes": "640"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_array(t_uint32)2_storage": {
+            "label": "uint32[2]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint32)dyn_storage": {
+            "label": "uint32[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint64)dyn_storage": {
+            "label": "uint64[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(GamePhase)1652": {
+            "label": "enum IAsyncKnifeHit.GamePhase",
+            "members": [
+              "None",
+              "Playing",
+              "End"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_struct(Uint64Set)2257_storage)": {
+            "label": "mapping(address => struct Set.Uint64Set)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_struct(KnifeHitMatchData)1685_storage)": {
+            "label": "mapping(uint64 => struct IAsyncKnifeHit.KnifeHitMatchData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_uint64)": {
+            "label": "mapping(uint64 => uint64)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(KnifeHitGameConfig)1802_storage": {
+            "label": "struct KnifeHitLogic.KnifeHitGameConfig",
+            "members": [
+              {
+                "label": "gameDuration",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "ratio",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "configs",
+                "type": "t_array(t_struct(KnifeHitLevelConfig)1811_storage)10_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "672"
+          },
+          "t_struct(KnifeHitLevelConfig)1811_storage": {
+            "label": "struct KnifeHitLogic.KnifeHitLevelConfig",
+            "members": [
+              {
+                "label": "easeType",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "rotateSpeed",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "knifeCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "1"
+              },
+              {
+                "label": "obstacle",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(KnifeHitMatchData)1685_storage": {
+            "label": "struct IAsyncKnifeHit.KnifeHitMatchData",
+            "members": [
+              {
+                "label": "matchId",
+                "type": "t_uint64",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "token",
+                "type": "t_address",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "entry",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "creator",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "winer",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "logicVersion",
+                "type": "t_uint8",
+                "offset": 20,
+                "slot": "3"
+              },
+              {
+                "label": "gamePhase",
+                "type": "t_enum(GamePhase)1652",
+                "offset": 21,
+                "slot": "3"
+              },
+              {
+                "label": "playerAddresses",
+                "type": "t_array(t_address)2_storage",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "player1Actions",
+                "type": "t_array(t_uint32)dyn_storage",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "player2Actions",
+                "type": "t_array(t_uint32)dyn_storage",
+                "offset": 0,
+                "slot": "7"
+              },
+              {
+                "label": "config",
+                "type": "t_struct(KnifeHitGameConfig)1802_storage",
+                "offset": 0,
+                "slot": "8"
+              },
+              {
+                "label": "playerScore",
+                "type": "t_array(t_uint32)2_storage",
+                "offset": 0,
+                "slot": "29"
+              }
+            ],
+            "numberOfBytes": "960"
+          },
+          "t_struct(Uint64Set)2257_storage": {
+            "label": "struct Set.Uint64Set",
+            "members": [
+              {
+                "label": "values",
+                "type": "t_array(t_uint64)dyn_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "positions",
+                "type": "t_mapping(t_uint64,t_uint64)",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        },
+        "namespaces": {}
+      }
+    },
+    "4c63f3dbca366fa96e0916406bbf3b755221848a5da058581405595945fd09fe": {
+      "address": "0x4Eb4b9DBA17334433a13869DF05342E1e231c113",
+      "txHash": "0xc5623f0885a23b689da70bad4ef63baae3dde1046569e09b05f77764b5df48aa",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "matches",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint64,t_struct(KnifeHitMatchData)1687_storage)",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:17"
+          },
+          {
+            "label": "availableMatches",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_struct(Uint64Set)2180_storage",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:19"
+          },
+          {
+            "label": "playerPlayingMatches",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_struct(Uint64Set)2180_storage)",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:21"
+          },
+          {
+            "label": "playerEndedMatches",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_struct(Uint64Set)2180_storage)",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:22"
+          },
+          {
+            "label": "gameConfig",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_struct(KnifeHitGameConfig)1804_storage",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:24"
+          },
+          {
+            "label": "matchNumber",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_uint64",
+            "contract": "AsyncKnifeHitStorage",
+            "src": "contracts/AsyncKnifeHit.sol:25"
+          },
+          {
+            "label": "_initialized",
+            "offset": 8,
+            "slot": "26",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 9,
+            "slot": "26",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "77",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "78",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "_paused",
+            "offset": 0,
+            "slot": "127",
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "128",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "177",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "178",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:88"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)2_storage": {
+            "label": "address[2]",
+            "numberOfBytes": "64"
+          },
+          "t_array(t_struct(KnifeHitLevelConfig)1813_storage)10_storage": {
+            "label": "struct KnifeHitLogic.KnifeHitLevelConfig[10]",
+            "numberOfBytes": "640"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_array(t_uint32)2_storage": {
+            "label": "uint32[2]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint32)dyn_storage": {
+            "label": "uint32[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint64)dyn_storage": {
+            "label": "uint64[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(GamePhase)1657": {
+            "label": "enum IAsyncKnifeHit.GamePhase",
+            "members": [
+              "None",
+              "Playing",
+              "End"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_struct(Uint64Set)2180_storage)": {
+            "label": "mapping(address => struct Set.Uint64Set)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_struct(KnifeHitMatchData)1687_storage)": {
+            "label": "mapping(uint64 => struct IAsyncKnifeHit.KnifeHitMatchData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint64,t_uint64)": {
+            "label": "mapping(uint64 => uint64)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(KnifeHitGameConfig)1804_storage": {
+            "label": "struct KnifeHitLogic.KnifeHitGameConfig",
+            "members": [
+              {
+                "label": "gameDuration",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "ratio",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "configs",
+                "type": "t_array(t_struct(KnifeHitLevelConfig)1813_storage)10_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "672"
+          },
+          "t_struct(KnifeHitLevelConfig)1813_storage": {
+            "label": "struct KnifeHitLogic.KnifeHitLevelConfig",
+            "members": [
+              {
+                "label": "easeType",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "rotateSpeed",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "knifeCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "1"
+              },
+              {
+                "label": "obstacle",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(KnifeHitMatchData)1687_storage": {
+            "label": "struct IAsyncKnifeHit.KnifeHitMatchData",
+            "members": [
+              {
+                "label": "matchId",
+                "type": "t_uint64",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "token",
+                "type": "t_address",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "entry",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "creator",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "winer",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "logicVersion",
+                "type": "t_uint8",
+                "offset": 20,
+                "slot": "3"
+              },
+              {
+                "label": "gamePhase",
+                "type": "t_enum(GamePhase)1657",
+                "offset": 21,
+                "slot": "3"
+              },
+              {
+                "label": "playerAddresses",
+                "type": "t_array(t_address)2_storage",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "player1Actions",
+                "type": "t_array(t_uint32)dyn_storage",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "player2Actions",
+                "type": "t_array(t_uint32)dyn_storage",
+                "offset": 0,
+                "slot": "7"
+              },
+              {
+                "label": "playerScore",
+                "type": "t_array(t_uint32)2_storage",
+                "offset": 0,
+                "slot": "8"
+              }
+            ],
+            "numberOfBytes": "288"
+          },
+          "t_struct(Uint64Set)2180_storage": {
             "label": "struct Set.Uint64Set",
             "members": [
               {

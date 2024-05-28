@@ -22,8 +22,6 @@ library Set {
 
     // AddressSet
     function insert(AddressSet storage _set, address _value) internal {
-           console.log("Uint64Set");
-        console.log(_value);
         if (_set.positions[_value] != 0) revert DuplicatedAddressValue(_value);
         _set.values.push(_value);
         _set.positions[_value] = uint64(_set.values.length);
@@ -58,9 +56,6 @@ library Set {
 
     // Uint64Set
     function insert(Uint64Set storage _set, uint64 _value) internal {
-        console.log("Uint64Set");
-        console.log(_value);
-
         if (_set.positions[_value] != 0) revert DuplicatedUint64Value(_value);
         _set.values.push(_value);
         _set.positions[_value] = uint64(_set.values.length);

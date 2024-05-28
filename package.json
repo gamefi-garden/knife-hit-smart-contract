@@ -2,30 +2,35 @@
     "name": "knife-hit-smart-contract",
     "scripts": {
         "node:local": "npx hardhat --config hardhat.local.config.ts node",
-
         "console:local": "npx hardhat --network localhost console",
         "deploy:local": "npx hardhat --network localhost run scripts/deploy.ts",
-
         "console:testnet": "npx hardhat --network testnet console",
         "deployAsync:testnet": "npx hardhat --network testnet run scripts/deploy.ts",
-
         "console:arcadeDev": "npx hardhat --network arcadeDev console",
-        "deploy:arcadeDev": "npx hardhat --network arcadeDev run scripts/deploy.ts"
-
+        "deploy:arcadeDev": "npx hardhat --network arcadeDev run scripts/deploy.ts",
+        "console:zktestnet": "npx hardhat --network zkTestnet console",
+        "deploy:zktestnet": "npx hardhat --config hardhat.config.ts --network zkTestnet run scripts/deploy.ts"
     },
     "devDependencies": {
+        "@matterlabs/hardhat-zksync-deploy": "^1.3.0",
+        "@matterlabs/hardhat-zksync-solc": "^1.1.4",
+        "@matterlabs/hardhat-zksync-upgradable": "^1.4.1",
         "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
-        "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+        "@nomicfoundation/hardhat-toolbox": "^5.0.0",
         "@nomiclabs/hardhat-solhint": "^3.0.1",
-        "@openzeppelin/contracts-upgradeable": "4.9.3",
-        "@openzeppelin/hardhat-upgrades": "^1.28.0",
-        "@types/random-seed": "^0.3.3",
-        "dotenv": "^16.1.4",
-        "hardhat": "^2.22.3",
-        "hardhat-contract-sizer": "^2.10.0",
+        "dotenv": "^16.1.3",
         "mocha-junit-reporter": "^2.2.0",
         "mocha-multi-reporters": "^1.5.1",
-        "random-seed": "^0.3.0",
-        "typescript": "^5.4.5"
+        "typescript": "^5.1.3"
+    },
+    "dependencies": {
+        "@openzeppelin/contracts": "^4.9.5",
+        "@openzeppelin/contracts-upgradeable": "^4.9.5",
+        "@openzeppelin/hardhat-upgrades": "^3.1.0",
+        "@prb/math": "^4.0.1",
+        "hardhat-contract-sizer": "^2.10.0",
+        "mocha": "^10.2.0",
+        "randomizer.sol": "^1.0.4",
+        "trigonometry.sol": "^1.0.2"
     }
 }
