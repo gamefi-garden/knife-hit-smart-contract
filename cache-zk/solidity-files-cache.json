@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Volumes/Dev/Code/autonomus-vr/knifehit/knifehit/contracts/AsyncKnifeHit.sol": {
-      "lastModificationDate": 1716792657715,
-      "contentHash": "552d8cfb52d1061e6191c38d9afdcfe5",
+      "lastModificationDate": 1717039521972,
+      "contentHash": "dbc45a945ee50db1a578675b3a279ecf",
       "sourceName": "contracts/AsyncKnifeHit.sol",
       "solcConfig": {
         "version": "0.8.19",

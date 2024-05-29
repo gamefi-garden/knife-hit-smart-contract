@@ -34,8 +34,12 @@ const config: HardhatUserConfig = {
               auto: true,
               interval: 5000,
             },
-            treasuryAddress: process.env.ARCADE_TREASURY_ADDRESS,
-            knifeHitAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
+            ethNetwork: "https://testnet.runechain.com/rpc", // The Ethereum Web3 RPC URL.
+            zksync: true, // Flag that targets zkSync Era.
+            deployerKey: process.env.TESTNET_DEPLOYER_PRIVATE_KEY,
+
+            treasuryAddress: process.env.TESTNET_TREASURY_ADDRESS,
+            mainAddress: process.env.TESTNET_DUCK_RACE_ADDRESS,
             contractFactory: process.env.CONTRACT_FACTORY_NAME
           } as any,
           arcadeDev: {
