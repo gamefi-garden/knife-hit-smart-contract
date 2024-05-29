@@ -300,7 +300,8 @@ ReentrancyGuardUpgradeable {
                 winner = matchDataJoin.playerAddresses[1];
                 emit KnifeHitMatchFulfillment(matchId, msg.sender, winner);
             } else {
-                winner = address(this);
+                // winner = address(this);
+                winner = ADDRESS_ZERO;
                 emit KnifeHitMatchFulfillment(matchId, msg.sender, ADDRESS_ZERO);
             }
             matchDataJoin.gamePhase = GamePhase.End;
@@ -315,6 +316,65 @@ ReentrancyGuardUpgradeable {
 
             Set.insert(playerEndedMatches[msg.sender],matchId);
 
+            uint256 entry = matchDataJoin.entry;
+            address token = matchDataJoin.token;
+
+            uint256 totalValue = entry * matchDataJoin.playerAddresses.length;
+
+            console.log("End");
+            console.log(matchDataJoin.winer);
+
+            if (matchDataJoin.winer != ADDRESS_ZERO)
+            {
+                uint256 fee = totalValue * feePercentage / 100;
+                uint256 prize = totalValue - fee;
+
+                console.log(fee);
+                console.log(prize);
+                console.log(token);
+
+                 if (token == ADDRESS_ZERO) {
+                     if (fee != 0) {
+                        (bool success, ) = treasury.call{value: fee}("");
+                            console.log(success);
+
+                            if (!success) revert FailedTransfer();
+                        }
+                        if (prize != 0) {
+                            (bool success, ) = matchDataJoin.winer.call{value: prize}("");
+
+                            console.log(success);
+                            if (!success) revert FailedTransfer();
+                        }
+                 }
+                 else{
+                    console.log("else");
+
+                     if (fee != 0) {
+                            // IERC20Upgradeable(token).transferFrom(msg.sender,treasury, fee);
+                            IERC20Upgradeable(token).transfer(treasury, fee);
+
+                        }
+                        if (prize != 0) {
+                            // IERC20Upgradeable(token).transferFrom(msg.sender,matchDataJoin.winer, prize);
+                            IERC20Upgradeable(token).transfer(matchDataJoin.winer, prize);
+                        }
+                 }
+
+
+            }
+            else
+            {
+                // transfer
+                    if (token == ADDRESS_ZERO) {
+                        (bool success,) = treasury.call{value: totalValue}("");
+                        if (!success) revert FailedTransfer();
+                    } else {
+                        // IERC20Upgradeable(token).transferFrom(msg.sender,treasury, totalValue);
+                        IERC20Upgradeable(token).transfer(treasury, totalValue);
+
+                    }
+            }
         }
 
         emit KnifeFindMatch(matchId);
