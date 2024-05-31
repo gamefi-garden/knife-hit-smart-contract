@@ -284,8 +284,10 @@ ReentrancyGuardUpgradeable {
             console.log("matchId:");
             console.log(matchId);
             KnifeHitMatchData storage matchDataJoin = matches[matchId];
+            console.log("Step 1");
 
             matchDataJoin.playerAddresses[1] = msg.sender;
+            console.log("Step 2");
 
             matchDataJoin.player2Actions = _actions;
 
@@ -295,6 +297,8 @@ ReentrancyGuardUpgradeable {
             matchDataJoin.player2Actions,
             gameConfig
             );
+                        console.log("Step 3");
+
             console.log("result");
             console.log(result);
             if (result > 0) {
@@ -338,6 +342,8 @@ ReentrancyGuardUpgradeable {
                 console.log(token);
 
                  if (token == ADDRESS_ZERO) {
+                                        console.log("if address zero");
+
                      if (fee != 0) {
                         (bool success, ) = treasury.call{value: fee}("");
                             console.log(success);
@@ -369,6 +375,8 @@ ReentrancyGuardUpgradeable {
             }
             else
             {
+                                                        console.log("if else");
+
                 // transfer
                     if (token == ADDRESS_ZERO) {
                         (bool success,) = treasury.call{value: totalValue}("");
