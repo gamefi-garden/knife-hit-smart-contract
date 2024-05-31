@@ -37,6 +37,7 @@ interface IAsyncKnifeHit {
     error InvalidActionNumber();
     error InvalidMatchAborting();
     error Unauthorized();
+    error FailedTransfer();
 
     function version() external pure returns (string memory version);
 

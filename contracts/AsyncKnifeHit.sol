@@ -10,6 +10,7 @@ import {IAsyncKnifeHit} from "./interfaces/IAsyncKnifeHit.sol";
 import {KnifeHitLogic} from "./libraries/KnifeHitLogic.sol";
 import {Set} from "contracts/libraries/Set.sol";
 import "hardhat/console.sol";
+import {IERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 
 
 
@@ -17,7 +18,9 @@ abstract contract AsyncKnifeHitStorage is IAsyncKnifeHit {
     mapping(uint64 => KnifeHitMatchData) internal matches;
 
     Set.Uint64Set internal availableMatches;
+    address public treasury;
 
+uint64 public feePercentage;
     mapping(address => Set.Uint64Set) internal playerPlayingMatches;
     mapping(address => Set.Uint64Set) internal playerEndedMatches;
 
@@ -41,7 +44,8 @@ ReentrancyGuardUpgradeable {
         console.log("initialize");
 
         console.log(_treasury);
-
+        treasury = _treasury;
+        feePercentage = 20;
         gameConfig = KnifeHitLogic.KnifeHitGameConfig({
         gameDuration: 30000,
         ratio: 30,
@@ -109,39 +113,39 @@ ReentrancyGuardUpgradeable {
         });
 
         
-        Set.insert(playerPlayingMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],1);
-        KnifeHitMatchData storage matchData1 = matches[1];
-        matchData1.playerScore[0] = 10;
-        matchData1.gamePhase == GamePhase.Playing;
+        // Set.insert(playerPlayingMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],1);
+        // KnifeHitMatchData storage matchData1 = matches[1];
+        // matchData1.playerScore[0] = 10;
+        // matchData1.gamePhase == GamePhase.Playing;
 
-        Set.insert(playerPlayingMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],2);
-        KnifeHitMatchData storage matchData2 = matches[2];
-        matchData2.playerScore[0] = 10;
-        matchData2.gamePhase == GamePhase.Playing;
+        // Set.insert(playerPlayingMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],2);
+        // KnifeHitMatchData storage matchData2 = matches[2];
+        // matchData2.playerScore[0] = 10;
+        // matchData2.gamePhase == GamePhase.Playing;
 
-        Set.insert(playerPlayingMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],3);
-        KnifeHitMatchData storage matchData3 = matches[3];
-        matchData3.playerScore[0] = 10;
-        matchData3.gamePhase == GamePhase.Playing;
+        // Set.insert(playerPlayingMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],3);
+        // KnifeHitMatchData storage matchData3 = matches[3];
+        // matchData3.playerScore[0] = 10;
+        // matchData3.gamePhase == GamePhase.Playing;
       
 
-        Set.insert(playerEndedMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],4);
-        KnifeHitMatchData storage matchData4 = matches[4];
-        matchData4.playerScore[0] = 10;
-        matchData4.playerScore[1] = 10;
-        matchData4.gamePhase == GamePhase.End;
+        // Set.insert(playerEndedMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],4);
+        // KnifeHitMatchData storage matchData4 = matches[4];
+        // matchData4.playerScore[0] = 10;
+        // matchData4.playerScore[1] = 10;
+        // matchData4.gamePhase == GamePhase.End;
 
-        Set.insert(playerEndedMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],5);
+        // Set.insert(playerEndedMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],5);
      
-        KnifeHitMatchData storage matchData5 = matches[5];
-        matchData5.playerScore[0] = 5;
-        matchData5.playerScore[1] = 10;
+        // KnifeHitMatchData storage matchData5 = matches[5];
+        // matchData5.playerScore[0] = 5;
+        // matchData5.playerScore[1] = 10;
 
-        Set.insert(playerEndedMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],6);
-        KnifeHitMatchData storage matchData6 = matches[6];
+        // Set.insert(playerEndedMatches[0xCa507f10C53a5F5bAE8577f0309755d5179965aF],6);
+        // KnifeHitMatchData storage matchData6 = matches[6];
 
-        matchData6.playerScore[0] = 10;
-        matchData6.playerScore[1] = 5;
+        // matchData6.playerScore[0] = 10;
+        // matchData6.playerScore[1] = 5;
 
         emit Initialize();
 
