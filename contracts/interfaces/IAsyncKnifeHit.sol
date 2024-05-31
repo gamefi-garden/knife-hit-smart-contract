@@ -38,7 +38,7 @@ interface IAsyncKnifeHit {
     error InvalidMatchAborting();
     error Unauthorized();
     error FailedTransfer();
-
+    error InsufficientFunds();
     function version() external pure returns (string memory version);
 
     function getPlayingMatchesOf(address _player) external view returns (uint64[] memory);

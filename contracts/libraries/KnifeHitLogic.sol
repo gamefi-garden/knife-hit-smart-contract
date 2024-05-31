@@ -116,6 +116,9 @@ library KnifeHitLogic {
         uint32[] memory _player2Actions,
         KnifeHitGameConfig memory configs
     ) internal pure returns (uint32) {
+        console.log(CalculateScore(_player1Actions,configs));
+        console.log(CalculateScore(_player2Actions,configs));
+
         uint32 result = CalculateScore(_player1Actions,configs) - CalculateScore(_player2Actions,configs);
         return result;
     }

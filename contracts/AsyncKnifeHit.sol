@@ -28,6 +28,7 @@ uint64 public feePercentage;
     uint64 public matchNumber;
 
 }
+
 contract AsyncKnifeHit is
 AsyncKnifeHitStorage,
 OwnableUpgradeable,
@@ -47,68 +48,69 @@ ReentrancyGuardUpgradeable {
         treasury = _treasury;
         feePercentage = 20;
         gameConfig = KnifeHitLogic.KnifeHitGameConfig({
-        gameDuration: 30000,
+         gameDuration: 30000,
         ratio: 30,
         configs: [
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
             rotateSpeed: 6000,
-            knifeCount: 9,
-            obstacle: 32816 //800- 1000 - 3000
+            knifeCount: 4,
+            obstacle: 257 //0-1600
+
         }),
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
             rotateSpeed: 6000,
-            knifeCount: 4,
-            obstacle: 32816
+            knifeCount: 5,
+            obstacle: 32769 //0-3000
         }),
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
             rotateSpeed: 6000,
-            knifeCount: 4,
-            obstacle: 1073782784
+            knifeCount: 5,
+            obstacle:  262401 //0-1600-3600
         }),
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
             rotateSpeed: 6000,
-            knifeCount: 4,
-            obstacle: 1073782784
+            knifeCount: 5,
+            obstacle:  268697856 //5600-1600-3600
         }),
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
             rotateSpeed: 6000,
-            knifeCount: 4,
-            obstacle: 1073782784
+            knifeCount: 6,
+            obstacle:  270344 //600-2600-3600
         }),
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
             rotateSpeed: 6000,
-            knifeCount: 4,
-            obstacle: 1073782784
+            knifeCount: 6,
+            obstacle:  67371584 //1200-1800-3600-5200
         }),
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
             rotateSpeed: 5000,
-            knifeCount: 4,
-            obstacle: 1073782784
+            knifeCount: 6,
+            obstacle:  294977 //1200-3000-0-3600
         }),   
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
             rotateSpeed: 5000,
-            knifeCount: 4,
-            obstacle: 1073782784
+            knifeCount: 9,
+            obstacle:  17047618 //200-1200-2600-3600-4800
         }), 
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
             rotateSpeed: 5000,
-            knifeCount: 4,
-            obstacle: 1073782784
+            knifeCount: 9,
+            obstacle:  151027780 //400-1200-3000-4800-5400
         }),  
         KnifeHitLogic.KnifeHitLevelConfig({
             easeType: 0,
             rotateSpeed: 5000,
-            knifeCount: 4,
-            obstacle: 1073782784
+            knifeCount: 10,
+            obstacle:  272908562 //200-800-1600-2800-3600-4400-5600
         })]
         });
 
@@ -212,6 +214,15 @@ ReentrancyGuardUpgradeable {
         uint256 _entry,
         uint32[] memory _actions
     ) external payable nonReentrant whenNotPaused {
+
+        console.log("findMatch");
+
+        console.log(_token == ADDRESS_ZERO);
+        if (_token == ADDRESS_ZERO) {
+            if (_entry > msg.value) revert InsufficientFunds();
+        } else {
+            IERC20Upgradeable(_token).transfer(address(this), _entry);
+        }
 
         bool roomFound = false;
         KnifeHitMatchData memory matchData;
@@ -324,12 +335,13 @@ ReentrancyGuardUpgradeable {
 
             Set.insert(playerEndedMatches[msg.sender],matchId);
 
-            uint256 entry = matchDataJoin.entry;
-            address token = matchDataJoin.token;
+            uint256 entry = matchData.entry;
+            address token = matchData.token;
 
-            uint256 totalValue = entry * matchDataJoin.playerAddresses.length;
+            uint256 totalValue = entry * matchData.playerAddresses.length;
 
             console.log("End");
+            console.log(matchData.winer);
             console.log(matchDataJoin.winer);
 
             if (matchDataJoin.winer != ADDRESS_ZERO)
@@ -342,41 +354,43 @@ ReentrancyGuardUpgradeable {
                 console.log(token);
 
                  if (token == ADDRESS_ZERO) {
-                                        console.log("if address zero");
+                    console.log("if address zero");
 
-                     if (fee != 0) {
-                        (bool success, ) = treasury.call{value: fee}("");
-                            console.log(success);
+                    if (fee != 0) {
+                    (bool success, ) = treasury.call{value: fee}("");
+                        console.log(success);
 
-                            if (!success) revert FailedTransfer();
-                        }
-                        if (prize != 0) {
-                            (bool success, ) = matchDataJoin.winer.call{value: prize}("");
+                        if (!success) revert FailedTransfer();
+                    }
+                    if (prize != 0) {
+                        (bool success, ) = matchDataJoin.winer.call{value: prize}("");
 
-                            console.log(success);
-                            if (!success) revert FailedTransfer();
-                        }
+                        console.log(success);
+                        if (!success) revert FailedTransfer();
+                    }
                  }
                  else{
                     console.log("else");
 
-                     if (fee != 0) {
-                            // IERC20Upgradeable(token).transferFrom(msg.sender,treasury, fee);
-                            IERC20Upgradeable(token).transfer(treasury, fee);
+                    if (fee != 0) {
+                        // IERC20Upgradeable(token).transferFrom(msg.sender,treasury, fee);
+                        IERC20Upgradeable(token).transfer(treasury, fee);
 
-                        }
-                        if (prize != 0) {
-                            // IERC20Upgradeable(token).transferFrom(msg.sender,matchDataJoin.winer, prize);
-                            IERC20Upgradeable(token).transfer(matchDataJoin.winer, prize);
-                        }
+                    }
+                    if (prize != 0) {
+                        // IERC20Upgradeable(token).transferFrom(msg.sender,matchDataJoin.winer, prize);
+                        IERC20Upgradeable(token).transfer(matchDataJoin.winer, prize);
+                    }
                  }
 
 
             }
             else
             {
-                                                        console.log("if else");
+                    console.log("if else");
+                        // console.log(value);
 
+// address(this)
                 // transfer
                     if (token == ADDRESS_ZERO) {
                         (bool success,) = treasury.call{value: totalValue}("");
@@ -387,7 +401,11 @@ ReentrancyGuardUpgradeable {
 
                     }
             }
+
+          
         }
+
+            
 
         emit KnifeFindMatch(matchId);
 
