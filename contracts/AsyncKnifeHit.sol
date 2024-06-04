@@ -180,7 +180,7 @@ ReentrancyGuardUpgradeable {
 
 
         if (_token == ADDRESS_ZERO) {
-            if (_entry != msg.value) revert InsufficientFunds();
+            if (_entry > msg.value) revert InsufficientFunds();
         } else {
             IERC20Upgradeable(_token).transferFrom(msg.sender, address(this), _entry);
         }
